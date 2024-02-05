@@ -1,0 +1,20 @@
+﻿Level specific issues
+
+
+Realism issues
+(high) MutualGravitation ruleset will double count two gravitating objects against each other, doubling their pull on each other.
+(medium) There is some issue where little masses, initially at rest, being pulled in by gravity and crasing into a sun will push the sun away. There really should be net zero movement in the system after absorption I think.
+
+Gameplay issues
+(high) Ejection speed should probably increase as you get bigger. Otherwise it gets increasingly boring to traverse long distances
+(low) Improve the mouse direction pointer. It's not very pretty, doesn't scale great when you zoom, and isn't obvious to use.
+(medium) check all spellin' plz
+
+Features
+Somehow mark off levels that have been beaten
+instead of culling distant objects, don't include them in the collision detection partitions?
+
+Performance issues
+(medium) My collision detection has nice "average case" execution time, but not great "worst case" execution time. And "worst case" is probably more important in a game.
+(super low) Don't redraw the mouse direction pointer so often
+(medium) Make the collision skip a configurable setting, or auto-detect it based on CPU usage
