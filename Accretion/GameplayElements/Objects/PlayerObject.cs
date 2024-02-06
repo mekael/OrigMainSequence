@@ -17,9 +17,9 @@ namespace Accretion.GameplayElements.Objects
         protected static SoundEffect ejectionSound;
         protected static SoundEffect failedEjectionSound;
 
-#if !WINDOWS_PHONE
+ 
         private Texture2D helperLineTexture;
-#endif
+ 
 
         public PlayerObject(Vector2 location, Vector2 velocity, int mass, int radius, int ejectionSpeed)
             : base(location, velocity, mass, radius)
@@ -87,7 +87,7 @@ namespace Accretion.GameplayElements.Objects
             }
 #endif
 
-#if !WINDOWS_PHONE
+ 
             //TODO: only recreate the helper line texture if the zoom level or player radius has changed
             //if (zoomLevel != oldZoomLevel || player.getRadius() != oldPlayerRadius)
             //{
@@ -97,7 +97,7 @@ namespace Accretion.GameplayElements.Objects
             //}
 
             LineCreator.DrawLine(helperLineTexture, playerScreenLocation, pointingDirection, Color.Purple, spriteBatch);
-#endif
+ 
             if (this.powerUp != null)
             {
                 this.powerUp.drawAttached(spriteBatch, cameraFieldLocation, zoomLevel, lightSource, this, windowWidth, windowHeight);

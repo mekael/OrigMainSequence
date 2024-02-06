@@ -21,13 +21,9 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
 
         public ThreadQueueCollisionDetection()
         {
-#if WINDOWS
+ 
             this.threadCount = Environment.ProcessorCount;
-#elif WINDOWS_PHONE
-            this.threadCount = 1;
-#elif XBOX
-            this.threadCount = 4;
-#endif
+ 
             threads = new List<Thread>(this.threadCount);
             workerBlockers = new List<AutoResetEvent>(this.threadCount);
             mainThreadBlockers = new List<AutoResetEvent>(this.threadCount);

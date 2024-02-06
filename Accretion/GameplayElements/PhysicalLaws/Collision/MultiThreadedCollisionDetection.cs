@@ -20,13 +20,9 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
 
         public MultiThreadedCollisionDetection()
         {
-#if WINDOWS
+ 
             this.threadCount = Environment.ProcessorCount;
-#elif WINDOWS_PHONE
-            this.threadCount = 1;
-#elif XBOX
-            this.threadCount = 4;
-#endif
+ 
             threads = new List<Thread>(this.threadCount);
             workerBlockers = new List<AutoResetEvent>(this.threadCount);
             mainThreadBlockers = new List<AutoResetEvent>(this.threadCount);
@@ -134,24 +130,7 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
         {
             int threadNum = (int)autoResetEventNumber;
 
-#if XBOX
-            if (threadNum == 0)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(1);
-            }
-            else if (threadNum == 1)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(3);
-            }
-            else if (threadNum == 2)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(4);
-            }
-            else if (threadNum == 3)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(5);
-            }
-#endif
+ 
 
             while (this.working)
             {
