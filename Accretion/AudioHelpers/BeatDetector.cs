@@ -1,12 +1,10 @@
-﻿namespace Accretion.AudioHelpers
+﻿using Microsoft.Xna.Framework.Media;
+
+namespace Accretion.AudioHelpers
 {
     internal class BeatDetector
     {
         private static double previousBassIntensity = 1;
-
-#if WINDOWS_PHONE
-        private static Random random = new Random();
-#endif
 
         /// <summary>
         /// Returns a value from 0 to 1 representing the intensity of the bass frequencies of
@@ -35,7 +33,6 @@
         /// <returns>a double from 0 to 1 representing the bass intensity</returns>
         private static double getBassPower()
         {
-#if WINDOWS || XBOX
             if (MediaPlayer.State == MediaState.Playing)
             {
                 VisualizationData vizData = new VisualizationData();
@@ -47,20 +44,7 @@
             {
                 return 1;
             }
-#elif WINDOWS_PHONE
-            //windows phone doesn't support the music visualizer api. try putting some random junk here to make stuff still pulsate.
-            float fakePower = (DateTime.Now.Millisecond % 750) / 750f;
-            if (fakePower < 0.3f)
-            {
-                fakePower = 0.45f;
-            }
-            else if (fakePower > 0.65f)
-            {
-                fakePower = 0.65f;
-            }
 
-            return fakePower;
-#endif
         }
     }
 }
