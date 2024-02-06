@@ -28,13 +28,16 @@ namespace Accretion.GameplayObjects
         private bool doneIntroZooming = false; //a flag to note when we are done with level-start zoom in effect
         private float? lastAutoZoom;
 
-#if WINDOWS
+//#if WINDOWS
         public ICollisionDetection collisionDetection = new TPLCollisionDetection();
+/*
 #elif XBOX
         public ICollisionDetection collisionDetection = new SingleThreadedCollisionDetection();
 #elif WINDOWS_PHONE
         public ICollisionDetection collisionDetection = new SingleThreadedCollisionDetection();
 #endif
+
+ */
 
         //level conditionals
         public bool wrapEdges = false;

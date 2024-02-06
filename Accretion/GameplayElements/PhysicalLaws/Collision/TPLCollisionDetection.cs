@@ -16,7 +16,7 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
         public bool collisionDetection(List<SpaceObject> collisionObjects)
         {
             //As far as I know, this will only work on windows which has the .net4 profile
-#if WINDOWS
+//#if WINDOWS
             bool collision = false;
             if (collisionObjects != null && collisionObjects.Count > 0)
             {
@@ -112,9 +112,9 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
             }
 
             return collision;
-#else
-            throw new InvalidOperationException("This algorith will only run on Windows, which supports System.Threading.Tasks");
-#endif
+//#else
+  //          throw new InvalidOperationException("This algorith will only run on Windows, which supports System.Threading.Tasks");
+//#endif
         }
 
         private bool detectCollisions(List<SpaceObject> spaceObjects)
