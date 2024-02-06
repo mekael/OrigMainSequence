@@ -7,25 +7,12 @@ namespace Accretion.Levels
 {
     internal class Shell : Heliocentric
     {
-#if WINDOWS
         new protected const int MASSES = 6000;
         new protected const int SOLAR_SYSTEM_SIZE = 120000;
         new protected const int STARTING_OBJECT_MAX_MASS = 240;
         new protected const int STARTING_PLAYER_MASS = 25;
         new protected const int SUN_MASS = 48000;
-#elif XBOX
-        new protected const int MASSES = 900;
-        new protected const int SOLAR_SYSTEM_SIZE = 75000;
-        new protected const int STARTING_OBJECT_MAX_MASS = 480;
-        new protected const int STARTING_PLAYER_MASS = 40;
-        new protected const int SUN_MASS = 24000;
-#elif WINDOWS_PHONE
-        new protected const int MASSES = 660;
-        new protected const int SOLAR_SYSTEM_SIZE = 75000;
-        new protected const int STARTING_OBJECT_MAX_MASS = 480;
-        new protected const int STARTING_PLAYER_MASS = 40;
-        new protected const int SUN_MASS = 24000;
-#endif
+
 
         public override PlayerObject player()
         {

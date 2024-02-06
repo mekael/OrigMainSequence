@@ -6,7 +6,6 @@ namespace Accretion.Levels
 {
     internal class TwinPeaks : Heliocentric
     {
-#if WINDOWS
         new protected const int MASSES = 6000;
         new protected const int SOLAR_SYSTEM_SIZE = 121000;
         private const int SUN_ORBIT_SPEEDS = 25;
@@ -15,23 +14,6 @@ namespace Accretion.Levels
         private const float RING_MULTIPLIER = 4f;
         private const double FRACTION_OF_MASS_TO_PUT_IN_RING = .8d;
 
-#elif XBOX
-        new protected const int MASSES = 1000;
-        new protected const int SOLAR_SYSTEM_SIZE = 83000;
-        private const int SUN_ORBIT_SPEEDS = 25;
-        new protected const int STARTING_PLAYER_MASS = 80;
-        new protected const int SUN_MASS = 5250;
-        private const float RING_MULTIPLIER = 4f;
-        private const double FRACTION_OF_MASS_TO_PUT_IN_RING = .8d;
-#elif WINDOWS_PHONE
-        new protected const int MASSES = 800;
-        new protected const int SOLAR_SYSTEM_SIZE = 83000;
-        private const int SUN_ORBIT_SPEEDS = 25;
-        new protected const int STARTING_PLAYER_MASS = 80;
-        new protected const int SUN_MASS = 5250;
-        private const float RING_MULTIPLIER = 4f;
-        private const double FRACTION_OF_MASS_TO_PUT_IN_RING = .7d;
-#endif
 
         public TwinPeaks()
             : base()

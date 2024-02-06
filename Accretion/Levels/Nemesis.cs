@@ -7,24 +7,14 @@ namespace Accretion.Levels
     internal class Nemesis : Heliocentric
     {
         private const int NEMESIS_INTIAL_SPEED_DIVISOR = -5455; //divide solar system size by this to get initial speed of the nemesis
-#if WINDOWS_PHONE
-        new protected int MASSES = 700;
-        new protected int SOLAR_SYSTEM_SIZE = 40000;
-        protected const int STARTING_OBJECT_MAX_MASS = 275;
-        protected const int STARTING_PLAYER_MASS = 45;
-        private const float NEMESIS_DISTANCE_FACTOR = 5f;
-#else
         private const float NEMESIS_DISTANCE_FACTOR = 4.5f;
-#endif
 
         public Nemesis() : base()
         {
             this.music = null;
             this.mapSize = SOLAR_SYSTEM_SIZE * new Vector2(12, 8);
             this.wrapEdges = true;
-#if WINDOWS_PHONE
-            this.wrapEdges = true;
-#endif
+
         }
 
         public override string openingText()

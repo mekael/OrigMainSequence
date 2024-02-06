@@ -7,19 +7,10 @@ namespace Accretion.Levels
 {
     internal class MenuBackground : Level
     {
-#if WINDOWS
         protected const int MASSES = 1000;
         protected readonly Vector2 estimatedScreenSize = new Vector2(1920, 1080);
         protected const int STARTING_ZOOM = 40;
-#elif XBOX
-        protected const int MASSES = 700;
-        protected readonly Vector2 estimatedScreenSize = new Vector2(1920, 1080);
-        protected const int STARTING_ZOOM = 40;
-#elif WINDOWS_PHONE
-        protected const int MASSES = 200;
-        protected readonly Vector2 estimatedScreenSize = new Vector2(480, 800);
-        protected const int STARTING_ZOOM = 40;
-#endif
+
 
         protected const int SUN_MASS = 6000;
         protected const int STARTING_OBJECT_MAX_MASS = 70;

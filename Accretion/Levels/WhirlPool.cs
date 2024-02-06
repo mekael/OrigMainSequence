@@ -9,22 +9,11 @@ namespace Accretion.Levels
     {
         //overrides won't be useful here since we're using all the base class functions
 
-#if WINDOWS
         private const float VELOCITY_REDUCTION_FACTOR = 0.62f;
         private const int sunMassDivisor = 2;
         private const int gravityDivisor = 160;
         private readonly Vector2 MAP_SIZE = new Vector2(SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE) * 8;
-#elif XBOX
-        private const float VELOCITY_REDUCTION_FACTOR = 0.62f;
-        private const int sunMassDivisor = 3;
-        private const int gravityDivisor = 160;
-        private readonly Vector2 MAP_SIZE = new Vector2(SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE) * 8;
-#elif WINDOWS_PHONE
-        private const float VELOCITY_REDUCTION_FACTOR = 0.62f;
-        private const int sunMassDivisor = 3;
-        private const int gravityDivisor = 130;
-        private readonly Vector2 MAP_SIZE = new Vector2(SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE) * 6;
-#endif
+
 
         public WhirlPool()
         {

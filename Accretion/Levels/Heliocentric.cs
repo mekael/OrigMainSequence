@@ -7,33 +7,19 @@ namespace Accretion.Levels
 {
     internal class Heliocentric : Level
     {
-#if WINDOWS
+
         protected const int MASSES = 6000;
         protected const int SOLAR_SYSTEM_SIZE = 60000;
         protected const int STARTING_OBJECT_MAX_MASS = 120;
         protected const int STARTING_PLAYER_MASS = 25;
         protected const int SUN_MASS = 8000;
-#elif XBOX
-        protected const int MASSES = 1200;
-        protected const int SOLAR_SYSTEM_SIZE = 50000;
-        protected const int STARTING_OBJECT_MAX_MASS = 240;
-        protected const int STARTING_PLAYER_MASS = 40;
-        protected const int SUN_MASS = 6000;
-#elif WINDOWS_PHONE
-        protected const int MASSES = 880;
-        protected const int SOLAR_SYSTEM_SIZE = 50000;
-        protected const int STARTING_OBJECT_MAX_MASS = 240;
-        protected const int STARTING_PLAYER_MASS = 40;
-        protected const int SUN_MASS = 6000;
-#endif
+
 
         public Heliocentric()
         {
-#if WINDOWS_PHONE
-            this.mapSize = new Vector2(SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE) * 10;
-#else
+
             this.mapSize = new Vector2(SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE) * 15;
-#endif
+
             this.gravitationalLaw = new ClassicGravity();
         }
 

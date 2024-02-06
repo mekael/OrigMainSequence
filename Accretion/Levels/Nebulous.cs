@@ -6,22 +6,11 @@ namespace Accretion.Levels
 {
     internal class Nebulous : Level
     {
-#if WINDOWS
         protected const int MASSES = 6000;
         protected const int SOLAR_SYSTEM_SIZE = 60000;
         protected const int STARTING_OBJECT_MAX_MASS = 1;
         protected const int STARTING_PLAYER_MASS = 25;
-#elif XBOX
-        protected const int MASSES = 1200;
-        protected const int SOLAR_SYSTEM_SIZE = 40000;
-        protected const int STARTING_OBJECT_MAX_MASS = 2;
-        protected const int STARTING_PLAYER_MASS = 40;
-#elif WINDOWS_PHONE
-        protected const int MASSES = 880;
-        protected const int SOLAR_SYSTEM_SIZE = 40000;
-        protected const int STARTING_OBJECT_MAX_MASS = 2;
-        protected const int STARTING_PLAYER_MASS = 40;
-#endif
+
 
         public Nebulous()
         {

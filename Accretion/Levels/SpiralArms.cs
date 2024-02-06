@@ -8,9 +8,7 @@ namespace Accretion.Levels
     {
         protected new const int SOLAR_SYSTEM_SIZE = 120000;
         protected const int INITIAL_ZOOM = 400;
-#if XBOX
-        new protected const int MASSES = 1100;
-#endif
+ 
 
         public SpiralArms() : base()
         {

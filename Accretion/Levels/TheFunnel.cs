@@ -8,46 +8,23 @@ namespace Accretion.Levels
 {
     internal class TheFunnel : Level
     {
-#if WINDOWS
-        protected const int SOLAR_SYSTEM_HEIGHT = 70000;
+         protected const int SOLAR_SYSTEM_HEIGHT = 70000;
         protected const int SUN_MASS = 10000;
         protected const int VICTORY_SIZE = SUN_MASS * 19;
         protected const int MASSES = 4000;
         protected const int STARTING_PLAYER_MASS = 60;
         protected const int STARTING_MASS_MAX = 150;
         protected const int INITIAL_ZOOM = 600;
-#elif XBOX
-        protected const int SOLAR_SYSTEM_HEIGHT = 35000;
-        protected const int SUN_MASS = 5000;
-        protected const int VICTORY_SIZE = SUN_MASS * 9;
-        protected const int MASSES = 1100;
-        protected const int STARTING_PLAYER_MASS = 60;
-        protected const int STARTING_MASS_MAX = 140;
-        protected const int INITIAL_ZOOM = 300;
-#elif WINDOWS_PHONE
-        protected const int SOLAR_SYSTEM_HEIGHT = 35000;
-        protected const int SUN_MASS = 5000;
-        protected const int VICTORY_SIZE = SUN_MASS * 9;
-        protected const int MASSES = 800;
-        protected const int STARTING_PLAYER_MASS = 60;
-        protected const int STARTING_MASS_MAX = 140;
-        protected const int INITIAL_ZOOM = 300;
-#endif
+
 
         protected const int SOLAR_SYSTEM_LENGTH = SOLAR_SYSTEM_HEIGHT * 15 / 10;
         private float xOffset = 0;
 
         public TheFunnel()
         {
-#if WINDOWS_PHONE
-            this.mapSize = new Vector2(SOLAR_SYSTEM_LENGTH * 15, SOLAR_SYSTEM_HEIGHT * 8);
-            this.collisionDetection = new SingleThreadedSlowMoCollisionDetection();
-#elif XBOX
-            this.collisionDetection = new SingleThreadedSlowMoCollisionDetection();
+
             this.mapSize = new Vector2(SOLAR_SYSTEM_LENGTH * 20, SOLAR_SYSTEM_HEIGHT * 15);
-#else
-            this.mapSize = new Vector2(SOLAR_SYSTEM_LENGTH * 20, SOLAR_SYSTEM_HEIGHT * 15);
-#endif
+
             this.victoryCondition = new CriticalMassVictory(VICTORY_SIZE);
             this.gravitationalLaw = new MutualClassicGravity();
 

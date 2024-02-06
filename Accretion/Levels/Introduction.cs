@@ -9,22 +9,11 @@ namespace Accretion.Levels
 {
     internal class Introduction : Level
     {
-#if WINDOWS
         protected const int MASSES = 2500;
         private const int SOLAR_SYSTEM_SIZE = 60000;
         private const int VICTORY_MASS = STARTING_OBJECT_MAX_MASS * 40;
         private const int INITIAL_ZOOM = 200;
-#elif XBOX
-        protected const int MASSES = 800;
-        private const int SOLAR_SYSTEM_SIZE = 30000;
-        private const int VICTORY_MASS = STARTING_OBJECT_MAX_MASS * 12;
-        private const int INITIAL_ZOOM = 200;
-#elif WINDOWS_PHONE
-        protected const int MASSES = 800;
-        private const int SOLAR_SYSTEM_SIZE = 25000;
-        private const int VICTORY_MASS = STARTING_OBJECT_MAX_MASS * 12;
-        private const int INITIAL_ZOOM = 200;
-#endif
+
         protected const int STARTING_OBJECT_MAX_MASS = 60;
 
         public Introduction()

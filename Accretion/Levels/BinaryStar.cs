@@ -10,16 +10,12 @@ namespace Accretion.Levels
         private SpaceObject virtualSun = new RoundObject(Vector2.Zero, Vector2.Zero, SUN_MASS * 2, DEFAULT_DENSITY);
 
         protected const int SUN_VELOCITY = 130;
-#if WINDOWS_PHONE
-        new protected const int MASSES = 800;
-#endif
+
 
         public BinaryStar() : base()
         {
             this.music = null;
-#if WINDOWS_PHONE
-            this.mapSize = new Vector2(SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE) * 8;
-#endif
+
         }
 
         public override string openingText()

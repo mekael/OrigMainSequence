@@ -5,23 +5,11 @@ namespace Accretion.Levels
 {
     internal class Rings : Heliocentric
     {
-#if WINDOWS
         new protected const int STARTING_OBJECT_MAX_MASS = 92;
         new protected const int STARTING_PLAYER_MASS = 60;
         new protected const int SUN_MASS = 40000;
         protected const int INITIAL_ZOOM = 600;
-#elif XBOX
-        new protected const int STARTING_OBJECT_MAX_MASS = 132;
-        new protected const int STARTING_PLAYER_MASS = 88;
-        new protected const int SUN_MASS = 44000;
-        protected const int INITIAL_ZOOM = 500;
-#elif WINDOWS_PHONE
-        protected const int MASSES = 850;
-        new protected const int STARTING_OBJECT_MAX_MASS = 148;
-        new protected const int STARTING_PLAYER_MASS = 100;
-        new protected const int SUN_MASS = 40000;
-        protected const int INITIAL_ZOOM = 500;
-#endif
+
 
         public Rings()
         {
