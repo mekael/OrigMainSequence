@@ -1,6 +1,6 @@
 namespace Accretion
 {
-#if WINDOWS || XBOX
+
     static class Program
     {
         /// <summary>
@@ -14,5 +14,5 @@ namespace Accretion
             }
         }
     }
-#endif
+
 }
