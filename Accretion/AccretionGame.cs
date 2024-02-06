@@ -167,14 +167,16 @@ namespace Accretion
 
                 case GameStatus.OpeningText:
                     if (String.IsNullOrEmpty(this.level.openingText()) ||
-#if WINDOWS
-                        KeyboardHelper.anyKeyPressed(keyboardState, previousKeyboardState) ||
+                          KeyboardHelper.anyKeyPressed(keyboardState, previousKeyboardState) ||
                         mouseHandler.anyMouseClick(mouseState, previousMouseState)
-#elif XBOX
+//#if WINDOWS
+                 //       KeyboardHelper.anyKeyPressed(keyboardState, previousKeyboardState) ||
+                   //     mouseHandler.anyMouseClick(mouseState, previousMouseState)
+/*#elif XBOX
                         GamepadHelper.anyButtonPress(gamePadState, previousGamePadState)
 #elif WINDOWS_PHONE
                         TouchscreenHelper.getTaps() != null
-#endif
+#endif*/
                         )
                     {
                         this.gameStatus = GameStatus.InProgress;
@@ -242,9 +244,9 @@ namespace Accretion
                     else
                     {
                         Level newLevel = null;
-#if WINDOWS
+//#if WINDOWS
                             newLevel = LevelSelectMenuHelper.keyboardAndMouseLevelSelect(keyboardState, previousKeyboardState, mouseState, previousMouseState);
-#elif WINDOWS_PHONE
+/*#elif WINDOWS_PHONE
                             newLevel = LevelSelectMenuHelper.touchScreenInput();
 #elif XBOX
                         if (playerIndex.HasValue)
@@ -252,7 +254,7 @@ namespace Accretion
                             newLevel = LevelSelectMenuHelper.gamePadLevelSelect(gamePadState, previousGamePadState);
                         }
 #endif
-
+*/
                         if (newLevel != null)
                         {
                             if (newLevel is Quit)
@@ -317,17 +319,8 @@ namespace Accretion
         {
             if (!playerIndex.HasValue)
             {
-#if XBOX
-                for (int i = 0; i < 4; i++)
-                {
-                    if (GamePad.GetState((PlayerIndex)i).Buttons.Start == ButtonState.Pressed)
-                    {
-                        this.playerIndex = (PlayerIndex)i;
-                    }
-                }
-#else
                 this.playerIndex = PlayerIndex.One;
-#endif
+ 
                 GamepadHelper.activePlayerIndex = this.playerIndex;
 
                 if (playerIndex.HasValue)
@@ -347,9 +340,9 @@ namespace Accretion
                 {
                     checkForEjections(); //TODO: decide if this can be done less frequently, or maybe in Draw
                     checkForPowerUpUsage();
-#if WINDOWS
+//#if WINDOWS
                     this.previousMouseState = Mouse.GetState();
-#endif
+//#endif
                 }
 
                 gameField.update();
@@ -518,14 +511,14 @@ namespace Accretion
                 if (gameField != null && gameField.getPlayer() != null)
                 {
                     Vector2? ejectionDirection = null;
-#if WINDOWS
+//#if WINDOWS
                     MouseState currentMouseState = Mouse.GetState();
                     Vector2? ejectionClickLocation = mouseHandler.getEjectionMouseClick(currentMouseState, this.previousMouseState);
                     if (ejectionClickLocation.HasValue)
                     {
                         ejectionDirection = gameField.getScreenLocation(gameField.getPlayer()) - ejectionClickLocation;
                     }
-#elif XBOX
+/*#elif XBOX
                     ejectionDirection = GamepadHelper.getEjectionButtonPress(this.gamePadState, this.previousGamePadState);
 #elif WINDOWS_PHONE
                     List<Vector2> taps = TouchscreenHelper.getTaps();
@@ -533,7 +526,7 @@ namespace Accretion
                     {
                         ejectionDirection = gameField.getScreenLocation(gameField.getPlayer()) - taps[0];
                     }
-#endif
+#endif*/
                     if (ejectionDirection.HasValue && ejectionDirection.Value != Vector2.Zero)
                     {
                         //TODO: find the right fraction to eject
@@ -570,14 +563,14 @@ namespace Accretion
 
         private void checkForZoom()
         {
-#if WINDOWS
+//#if WINDOWS
             int scrollWheelChange = this.mouseHandler.getScrollWheelChange();
             if (scrollWheelChange != 0)
             {
                 double zoomChange = (double)scrollWheelChange / 300 * this.gameField.zoomLevel / 3d;
                 this.gameField.zoomLevel += (float)zoomChange;
             }
-#elif XBOX
+/*#elif XBOX
             float change = previousGamePadState.ThumbSticks.Right.Y * this.gameField.zoomLevel / 20f;
             this.gameField.zoomLevel -= change;
 #elif WINDOWS_PHONE
@@ -587,7 +580,7 @@ namespace Accretion
                 float newZoom = this.gameField.zoomLevel / change.Value;
                 this.gameField.zoomLevel = newZoom;
             }
-#endif
+#endif*/
 
             if (this.gameField.zoomLevel < MIN_ZOOM)
             {

@@ -46,7 +46,7 @@ namespace Accretion.GameplayElements.Objects
         private void loadSounds()
         {
             ejectionSound = AccretionGame.staticContent.Load<SoundEffect>("28839__junggle__btn029-2");
-            failedEjectionSound = AccretionGame.staticContent.Load<SoundEffect>("54405__korgms2000b__button-click");
+            //failedEjectionSound = AccretionGame.staticContent.Load<SoundEffect>("54405__korgms2000b__button-click");
             absorptionSound = AccretionGame.staticContent.Load<SoundEffect>("26893__vexst__reverse-snare-3-2");
         }
 

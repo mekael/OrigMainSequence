@@ -10,12 +10,9 @@ namespace Accretion.GraphicHelpers
         private const int MAX_STRING_CACHE_SIZE = 1000;
         private static Dictionary<string, List<String>> cache = new Dictionary<string, List<String>>();
 
-#if XBOX
-        private const double MAX_USABLE_SCREEN_FRACTION = 0.80;
-#else
         private const double MAX_USABLE_SCREEN_FRACTION = 0.95;
 
-#endif
+
         private const double BORDER_SCREEN_FRACTION = (1 - MAX_USABLE_SCREEN_FRACTION) / 2;
 
         public static void displayMessageTopRight(string message, SpriteFont font, SpriteBatch spriteBatch, int screenWidth, int screenHeight)
