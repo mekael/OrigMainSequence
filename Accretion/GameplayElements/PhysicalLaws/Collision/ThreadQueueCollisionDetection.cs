@@ -144,25 +144,7 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
         //Work queue version
         private void concurrentCollisionWorker(object autoResetEventNumber)
         {
-#if XBOX
-            int threadNum = (int)autoResetEventNumber;
-            if (threadNum == 0)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(1);
-            }
-            else if (threadNum == 1)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(3);
-            }
-            else if (threadNum == 2)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(4);
-            }
-            else if (threadNum == 3)
-            {
-                Thread.CurrentThread.SetProcessorAffinity(5);
-            }
-#endif
+ 
 
             int threadNumber = (int)autoResetEventNumber;
             while (true)

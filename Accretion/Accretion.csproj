@@ -18,6 +18,9 @@
     </None>
  
   </ItemGroup>
- 
+  <PropertyGroup >
+    <DefineConstants>WINDOWS</DefineConstants>
+  </PropertyGroup>
+  
 
 </Project>

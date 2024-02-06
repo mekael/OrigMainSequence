@@ -32,8 +32,7 @@ namespace Accretion.GraphicHelpers
 
         public static Level getLevel(int levelNumber)
         {
-            bool trialMode = false;
-
+ 
             switch (levelNumber)
             {
                 case 0:
@@ -52,77 +51,22 @@ namespace Accretion.GraphicHelpers
                     return new TheFunnel();
 
                 case 5:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new Nemesis();
-                    }
+                    return new Nemesis();
                 case 6:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new CounterRevolutionary();
-                    }
+                    return new CounterRevolutionary();
+
                 case 7:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new SpiralArms();
-                    }
+                    return new SpiralArms();
                 case 8:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new TwinPeaks();
-                    }
+                    return new TwinPeaks();
                 case 9:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new WhirlPool();
-                    }
+                    return new WhirlPool();
                 case 10:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new Nebulous();
-                    }
+                    return new Nebulous();
                 case 11:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new Shell();
-                    }
+                    return new Shell();
                 case 12:
-                    if (trialMode)
-                    {
-                        return new PurchasePrompt();
-                    }
-                    else
-                    {
-                        return new MeteorDefense();
-                    }
+                    return new MeteorDefense();
                 case 13:
                     return new Cancel();
 
@@ -133,6 +77,16 @@ namespace Accretion.GraphicHelpers
                 case 15:
                     return new Quit();
 
+                case 16:
+                    return new AntigravDebugLevel();
+                case 17:
+                    return new Debug();
+                case 18:
+                    return new DebugShrinkField();
+                case 19:
+                    return new DebugSpeedBoost();
+                case 20:
+                    return new GravDebugLevel();
                 default:
                     throw new IndexOutOfRangeException(String.Format("Unable to load level {0}", levelNumber));
             }
@@ -155,7 +109,13 @@ namespace Accretion.GraphicHelpers
             "Deconstructionist",
             "~Cancel~",
             "~Credits~",
-            "~Exit~"
+            "~Exit~",
+
+            "AntigravDebugLevel",
+            "Debug",
+            "DebugShrinkField",
+            "DebugSpeedBoost",
+            "GravDebugLevel",
         };
 
         public static Level gamePadLevelSelect(GamePadState gamePadState, GamePadState previousGamePadState)
@@ -374,11 +334,11 @@ namespace Accretion.GraphicHelpers
 
         private static Vector2 calculateTopLeftOffset(DisplayMode displayMode)
         {
-#if XBOX
-            return new Vector2(displayMode.Width, displayMode.Height) * 13 / 100;
-#else
+//#if XBOX
+           // return new Vector2(displayMode.Width, displayMode.Height) * 13 / 100;
+//#else
             return new Vector2(50, 75);
-#endif
+//#endif
         }
 
         private static BoundingBox? getMessageBoundingBox(int messageNumber)

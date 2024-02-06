@@ -27,14 +27,14 @@ namespace Accretion.GameplayElements.Objects.PowerUps
         public GravitatePowerUp(int uses) : base(uses)
         {
             this.gravitationalLaw = new ClassicGravityFractional(this.gravitationalFactor());
-            this.soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
+       //     this.soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
         }
 
         public GravitatePowerUp(int uses, Vector2 location, Vector2 velocity)
             : base(uses, location, velocity)
         {
             this.gravitationalLaw = new ClassicGravityFractional(this.gravitationalFactor());
-            this.soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
+         //   this.soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
         }
 
         protected internal virtual float gravitationalFactor()

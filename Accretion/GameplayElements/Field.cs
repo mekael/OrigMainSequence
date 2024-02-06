@@ -28,17 +28,22 @@ namespace Accretion.GameplayObjects
         private bool doneIntroZooming = false; //a flag to note when we are done with level-start zoom in effect
         private float? lastAutoZoom;
 
-//#if WINDOWS
+        // TPL Collision eats up to 3gb of ram when the end of the level is hit. 
+        // single threaded eats 500mb
+        // threadquee eats about 500
+        // multithreaded eats about 400
+        // SingleThreadedSlowMoCollisionDetection eats about 200
+        // 
+
+#if WINDOWS
         public ICollisionDetection collisionDetection = new TPLCollisionDetection();
-/*
+
 #elif XBOX
         public ICollisionDetection collisionDetection = new SingleThreadedCollisionDetection();
 #elif WINDOWS_PHONE
         public ICollisionDetection collisionDetection = new SingleThreadedCollisionDetection();
 #endif
-
- */
-
+ 
         //level conditionals
         public bool wrapEdges = false;
 

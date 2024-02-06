@@ -108,8 +108,8 @@ namespace Accretion.GameplayElements.Objects.PowerUps
 
             string displayString = displayChar.ToString();
             spriteBatch.DrawString(font, displayString, FieldAndScreenConversions.GetScreenLocation(this.getFieldLocation(), cameraLocation, zoomLevel), Color.DarkOrange, rotation + (float)Math.PI, this.fontCenter, fontZoomFactor / zoomLevel, SpriteEffects.None, 0);
-
-            spriteBatch.Draw(bubble, FieldAndScreenConversions.GetScreenLocation(this.getFieldLocation(), cameraLocation, zoomLevel), null, color, rotation, textureCenter, (float)Math.Max((float)this.getRadius() / zoomLevel / 100, .01), SpriteEffects.None, 0);
+            //todo: Fix this. 
+    //        spriteBatch.Draw(bubble, FieldAndScreenConversions.GetScreenLocation(this.getFieldLocation(), cameraLocation, zoomLevel), null, color, rotation, textureCenter, (float)Math.Max((float)this.getRadius() / zoomLevel / 100, .01), SpriteEffects.None, 0);
         }
     }
 }

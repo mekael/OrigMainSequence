@@ -2,9 +2,11 @@
 using Accretion.GameplayElements.Objects.PowerUps;
 using Accretion.GameplayObjects;
 using Accretion.GraphicHelpers;
+using Accretion.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace Accretion.GameplayElements.Objects

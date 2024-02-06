@@ -15,7 +15,7 @@ namespace Accretion.GameplayElements.Objects.PowerUps
         static ShrinkFieldPowerUp()
         {
             char.TryParse("R", out displayChar);
-            soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
+         //   soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
         }
 
         public override char getFieldDisplayCharacter()
