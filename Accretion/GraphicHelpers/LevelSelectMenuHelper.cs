@@ -33,9 +33,7 @@ namespace Accretion.GraphicHelpers
         public static Level getLevel(int levelNumber)
         {
             bool trialMode = false;
-#if WINDOWS_PHONE || XBOX
-            trialMode = Guide.IsTrialMode;
-#endif
+
             switch (levelNumber)
             {
                 case 0:
@@ -323,19 +321,9 @@ namespace Accretion.GraphicHelpers
             }
 #endif
 
-#if XBOX
-            String title;
-            if (Guide.IsTrialMode)
-            {
-             title = "Main Sequence trial";
-            }
-            else
-            {
-               title = "Main Sequence";
-            }
-#else
+
             String title = "Main Sequence";
-#endif
+
 
             Vector2 titleSize = font.MeasureString(title);
             Vector2 titleOrigin = titleSize / 2;

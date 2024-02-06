@@ -45,15 +45,7 @@ namespace Accretion
 
         public AccretionGame()
         {
-#if (DEBUG && (WINDOWS_PHONE || XBOX))
-            Guide.SimulateTrialMode = true;
-#else
-            Guide.SimulateTrialMode = false;
-#endif
-
-#if XBOX
-            Components.Add(new GamerServicesComponent(this));
-#endif
+ 
             this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             staticContent = this.Content;
@@ -279,17 +271,6 @@ namespace Accretion
                             {
                                 this.gameStatus = GameStatus.Credits;
                             }
-                            else if (newLevel is PurchasePrompt)
-                            {
-                                // MessageBox will have "OK" and "Cancel" buttons.
-                                List<String> mbList = new List<string>();
-                                mbList.Add("OK");
-                                mbList.Add("Cancel");
-
-                                // BeginShowMessageBox is asynchronous. We define the method PromptPurchase as the callback.
-                                Guide.BeginShowMessageBox("Trial Mode", "That's an advanced level. If you'd like access to all levels, click OK to buy the full game.", mbList, 0,
-                                                            MessageBoxIcon.None, PromptPurchase, null);
-                            }
                             else
                             {
                                 this.level = newLevel;
@@ -356,50 +337,7 @@ namespace Accretion
             }
         }
 
-        private void PromptPurchase(IAsyncResult ar)
-        {
-            // Complete the ShowMessageBox operation and get the index of the button that was clicked.
-            int? result = Guide.EndShowMessageBox(ar);
 
-            // Clicked "OK", so bring the user to the application's Marketplace page to buy the application.
-            try
-            {
-                if (result.HasValue && result == 0)
-                {
-                    while (Guide.IsVisible)
-                    {
-                        Thread.Sleep(100);
-                    }
-
-                    Guide.ShowMarketplace(playerIndex.Value);
-                }
-            }
-            catch (Exception e)
-            {
-                List<String> mbList = new List<string>();
-                mbList.Add("OK");
-                try
-                {
-                    while (Guide.IsVisible)
-                    {
-                        Thread.Sleep(100);
-                    }
-
-                    string message = "Couldn't load the marketplace. Try signing in to Live again." + Environment.NewLine + Environment.NewLine + "Details:" + Environment.NewLine + e.Message;
-                    if (message.Length >= 256)
-                    {
-                        message = message.Substring(0, 252) + "...";
-                    }
-
-                    Guide.BeginShowMessageBox("Trial Mode", message, mbList, 0,
-                                                                MessageBoxIcon.None, null, null);
-                }
-                catch (Exception ex)
-                {
-                    string m = ex.Message;
-                }
-            }
-        }
 
         private void updateSimulation()
         {
