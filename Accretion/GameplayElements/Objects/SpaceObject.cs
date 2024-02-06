@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
+﻿using Accretion.GameplayElements.Objects.PowerUps;
 using Accretion.GraphicHelpers;
-using Accretion.GameplayElements.Objects.PowerUps;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GameplayElements.Objects
 {
@@ -19,7 +14,7 @@ namespace Accretion.GameplayElements.Objects
 
         private Vector2 fieldLocation;
         private Vector2 velocity;
-        
+
         private int mass;
         private int radius;
         private double density;
@@ -52,8 +47,8 @@ namespace Accretion.GameplayElements.Objects
             this.updateColor();
         }
 
-        public SpaceObject(Vector2 location, Vector2 velocity, int mass, double density) : 
-            this(location, velocity,  mass, (int) Math.Ceiling(Math.Sqrt(mass / density)))
+        public SpaceObject(Vector2 location, Vector2 velocity, int mass, double density) :
+            this(location, velocity, mass, (int)Math.Ceiling(Math.Sqrt(mass / density)))
         {
         }
 

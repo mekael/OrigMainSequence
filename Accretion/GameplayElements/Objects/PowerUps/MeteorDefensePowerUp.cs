@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Accretion.GameplayObjects;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Accretion.GameplayObjects;
 using Accretion.GraphicHelpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    class MeteorDefensePowerUp : PowerUp
+    internal class MeteorDefensePowerUp : PowerUp
     {
         protected double rangeFactor = 20; //int radii
         protected readonly TimeSpan animationlength = TimeSpan.FromSeconds(0.5);
@@ -31,14 +29,15 @@ namespace Accretion.GameplayElements.Objects.PowerUps
             return displayChar;
         }
 
-        public MeteorDefensePowerUp(int uses, double rangeFactor) : base(uses) {
-           char.TryParse("M", out displayChar);
-           this.rangeFactor = rangeFactor;
-           if (soundEffect == null || noTarget == null)
-           {
-               soundEffect = AccretionGame.staticContent.Load<SoundEffect>("39459__the-bizniss__laser");
-               noTarget = AccretionGame.staticContent.Load<SoundEffect>("2014__e-p-manchester__flash");
-           }
+        public MeteorDefensePowerUp(int uses, double rangeFactor) : base(uses)
+        {
+            char.TryParse("M", out displayChar);
+            this.rangeFactor = rangeFactor;
+            if (soundEffect == null || noTarget == null)
+            {
+                soundEffect = AccretionGame.staticContent.Load<SoundEffect>("39459__the-bizniss__laser");
+                noTarget = AccretionGame.staticContent.Load<SoundEffect>("2014__e-p-manchester__flash");
+            }
         }
 
         public MeteorDefensePowerUp(int uses, double rangeFactor, Vector2 location, Vector2 velocity)
@@ -69,14 +68,14 @@ namespace Accretion.GameplayElements.Objects.PowerUps
                     {
                         double distance = Math.Abs((spaceObject.getFieldLocation() - player.getFieldLocation()).Length());
                         if (distance < rangeFactor * player.getRadius()
-                            && distance < closestDistance 
+                            && distance < closestDistance
                             && spaceObject.getMass() > player.getMass() * 4 / 5 //don't explode small things
-                            && spaceObject.getMass() < player.getMass() * 20 //don't explode huge things                       
+                            && spaceObject.getMass() < player.getMass() * 20 //don't explode huge things
                             && spaceObject != player //don't let them explode themself
                             && !spaceObject.hasGravity) //don't let them explode the sun
                         {
                             closestDistance = distance;
-                            closestObject = spaceObject;                            
+                            closestObject = spaceObject;
                         }
                     }
                 }

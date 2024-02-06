@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Accretion.GameplayObjects;
+using Accretion.GraphicHelpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Accretion.GraphicHelpers;
-using Accretion.GameplayObjects;
 
 namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    class HintPowerUp : PowerUp
+    internal class HintPowerUp : PowerUp
     {
         private String hint;
 

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace Accretion.GraphicHelpers
 {
-    class BlackBodyRadiationHelper
+    internal class BlackBodyRadiationHelper
     {
         //masses and associated colors
         private static readonly List<KeyValuePair<int, Color>> criticalMasses = new List<KeyValuePair<int, Color>>

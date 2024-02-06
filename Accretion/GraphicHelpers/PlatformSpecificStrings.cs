@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Accretion.GraphicHelpers
 {
-    class PlatformSpecificStrings
+    internal class PlatformSpecificStrings
     {
 #if WINDOWS
         public const string REPLAY_OR_BACK = "Press [Space] to play the level again or [Escape] to select a new level.";

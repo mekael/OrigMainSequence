@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace Accretion.GraphicHelpers
 {
-    class CircleCreator
+    internal class CircleCreator
     {
         public static void DrawCircle(int radius, Vector2 location, Color color, SpriteBatch spriteBatch)
         {

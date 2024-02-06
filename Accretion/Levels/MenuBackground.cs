@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
-using Accretion.Levels.VictoryConditions;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GraphicHelpers;
+using Accretion.Levels.VictoryConditions;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class MenuBackground : Level
+    internal class MenuBackground : Level
     {
-        #if WINDOWS
+#if WINDOWS
         protected const int MASSES = 1000;
         protected readonly Vector2 estimatedScreenSize = new Vector2(1920, 1080);
         protected const int STARTING_ZOOM = 40;
@@ -25,7 +21,7 @@ namespace Accretion.Levels
         protected const int STARTING_ZOOM = 40;
 #endif
 
-        protected const int SUN_MASS = 6000;        
+        protected const int SUN_MASS = 6000;
         protected const int STARTING_OBJECT_MAX_MASS = 70;
 
         protected int solarSystemSize;
@@ -35,7 +31,7 @@ namespace Accretion.Levels
             this.victoryCondition = new NeverEnding();
             this.initialZoom = STARTING_ZOOM;
             this.startingZoom = STARTING_ZOOM;
-            solarSystemSize = (int) FieldAndScreenConversions.GetFieldLocation(estimatedScreenSize, Vector2.Zero, STARTING_ZOOM).Length();
+            solarSystemSize = (int)FieldAndScreenConversions.GetFieldLocation(estimatedScreenSize, Vector2.Zero, STARTING_ZOOM).Length();
         }
 
         public override PlayerObject player()
@@ -49,7 +45,7 @@ namespace Accretion.Levels
             List<SpaceObject> spaceObjects = new List<SpaceObject>();
             Random rand = new Random();
 
-            int minOrbitDistance = (int) (sun.getFieldLocation().Length() + sun.getRadius() * 3);
+            int minOrbitDistance = (int)(sun.getFieldLocation().Length() + sun.getRadius() * 3);
 
             for (int i = 0; i < MASSES; i++)
             {

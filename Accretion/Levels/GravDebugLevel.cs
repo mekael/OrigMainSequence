@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GameplayElements.Objects.PowerUps;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class GravDebugLevel : Heliocentric
+    internal class GravDebugLevel : Heliocentric
     {
         public override PlayerObject player()
         {

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
-using Accretion.GraphicHelpers;
+﻿using Accretion.GraphicHelpers;
 using Microsoft.Xna.Framework;
-using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GameplayElements.Objects
 {
-    class RoundObject : SpaceObject
+    internal class RoundObject : SpaceObject
     {
         protected static Texture2D texture;
         private static bool hasLightSource = true;
@@ -57,8 +52,6 @@ namespace Accretion.GameplayElements.Objects
             spriteBatch.Draw(texture, FieldAndScreenConversions.GetScreenLocation(this.getFieldLocation(), cameraFieldLocation, zoomLevel), null, color, rotation, textureCenter, (float)Math.Max((float)this.getRadius() / zoomLevel / 100, .01), SpriteEffects.None, 0);
         }
 
-        
-
         public override List<SpaceObject> explode()
         {
             this.pendingRemoval = true;
@@ -101,7 +94,7 @@ namespace Accretion.GameplayElements.Objects
                                 {
                                     allFragmentsClear = false;
                                     break;
-                                }                                
+                                }
                             }
 
                             if (allFragmentsClear)

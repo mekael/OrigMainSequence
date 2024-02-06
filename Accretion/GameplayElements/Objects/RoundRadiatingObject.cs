@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Accretion.GraphicHelpers;
 using Microsoft.Xna.Framework;
-using Accretion.GraphicHelpers;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GameplayElements.Objects
 {
-    class RoundRadiatingObject : RoundObject
+    internal class RoundRadiatingObject : RoundObject
     {
         private static Texture2D sunTexture = AccretionGame.staticContent.Load<Texture2D>("circle200");
 

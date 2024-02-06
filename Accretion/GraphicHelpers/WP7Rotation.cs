@@ -1,31 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace Accretion.GraphicHelpers
 {
-    class WP7Rotation
+    internal class WP7Rotation
     {
         public static void rotateVertical(GraphicsDeviceManager graphics)
         {
-            #if WINDOWS_PHONE
+#if WINDOWS_PHONE
             if (graphics.PreferredBackBufferHeight < graphics.PreferredBackBufferWidth)
             {
                 rotate(graphics);
             }
-            #endif
+#endif
         }
 
         public static void rotateHorizontal(GraphicsDeviceManager graphics)
         {
-            #if WINDOWS_PHONE
+#if WINDOWS_PHONE
             if (graphics.PreferredBackBufferWidth < graphics.PreferredBackBufferHeight)
             {
                 rotate(graphics);
             }
-            #endif
+#endif
         }
 
         private static void rotate(GraphicsDeviceManager graphics)

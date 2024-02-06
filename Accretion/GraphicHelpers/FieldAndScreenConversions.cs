@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Accretion.GameplayElements.Objects;
 using Microsoft.Xna.Framework;
-using Accretion.GameplayElements.Objects;
 
 namespace Accretion.GraphicHelpers
 {

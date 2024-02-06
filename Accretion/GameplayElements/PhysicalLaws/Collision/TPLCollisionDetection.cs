@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Accretion.GameplayElements.Objects;
-using System.Threading;
-using System.Collections;
+using Microsoft.Xna.Framework;
+
 #if WINDOWS
 using System.Threading.Tasks;
 #endif
@@ -113,14 +108,14 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                                 collision = true;
                             }
                         }
-                    });              
+                    });
             }
 
             return collision;
 #else
             throw new InvalidOperationException("This algorith will only run on Windows, which supports System.Threading.Tasks");
-#endif        
-            }
+#endif
+        }
 
         private bool detectCollisions(List<SpaceObject> spaceObjects)
         {
@@ -218,7 +213,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                             if (spaceObject.getFieldLocation().X > bound.Y)
                             {
                                 bound.Y = spaceObject.getFieldLocation().X;
-
                             }
                         }
                     }
@@ -240,7 +234,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                             if (spaceObject.getFieldLocation().Y > bound.Z)
                             {
                                 bound.Z = spaceObject.getFieldLocation().Y;
-
                             }
                         }
                     }

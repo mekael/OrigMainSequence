@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Accretion.Input
 {
-    class GamepadHelper
+    internal class GamepadHelper
     {
         private static readonly Vector2 HORIZONTAL_FLIP = new Vector2(-1, 1);
         private static Vector2 lastThumbPadDirection;
@@ -86,7 +82,7 @@ namespace Accretion.Input
                 downScrollStarted = DateTime.UtcNow;
                 return true;
             }
-            else if ((gamePadState.ThumbSticks.Left.Y < -0.1 || gamePadState.ThumbSticks.Right.Y < -0.1 || gamePadState.IsButtonDown(Buttons.DPadDown))  && downScrollStarted.HasValue)
+            else if ((gamePadState.ThumbSticks.Left.Y < -0.1 || gamePadState.ThumbSticks.Right.Y < -0.1 || gamePadState.IsButtonDown(Buttons.DPadDown)) && downScrollStarted.HasValue)
             {
                 return false;
             }

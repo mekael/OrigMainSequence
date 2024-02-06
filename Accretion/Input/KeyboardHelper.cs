@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 
 namespace Accretion.Input
 {
-    class KeyboardHelper
+    internal class KeyboardHelper
     {
         public static bool anyKeyPressed(KeyboardState keyboardState, KeyboardState previousKeyboardState)
         {

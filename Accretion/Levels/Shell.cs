@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GameplayElements.Objects.PowerUps;
 using Accretion.Levels.LevelGenerationHelpers;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Shell : Heliocentric
+    internal class Shell : Heliocentric
     {
 #if WINDOWS
         new protected const int MASSES = 6000;
@@ -96,7 +92,7 @@ namespace Accretion.Levels
             //Add the powerup
             Vector2 powerupLocation = player.getFieldLocation() - Vector2.UnitY * player.getRadius() * 16;
             spaceObjects.Add(new ShrinkFieldPowerUp(3, powerupLocation, this.gravitationalLaw.orbitalVelocity(powerupLocation, this.gravitationalObjects().First())));
-            
+
             return spaceObjects;
         }
 

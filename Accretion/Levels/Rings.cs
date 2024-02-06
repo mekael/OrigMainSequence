@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
+﻿using Accretion.GameplayElements.Objects;
 using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Rings : Heliocentric
+    internal class Rings : Heliocentric
     {
 #if WINDOWS
         new protected const int STARTING_OBJECT_MAX_MASS = 92;
@@ -54,13 +50,13 @@ namespace Accretion.Levels
             //4 rings
             for (int ring = 0; ring < 4; ring++)
             {
-                for (int rock = 0; rock < (int) Math.Sqrt(magicNumber * (ring + 7)); rock++)
+                for (int rock = 0; rock < (int)Math.Sqrt(magicNumber * (ring + 7)); rock++)
                 {
                     Vector2 location = new Vector2((float)rand.NextDouble(), (float)rand.NextDouble()) - new Vector2(0.5f, 0.5f);
                     location.Normalize();
                     location = location * (int)(rand.Next(0, (int)(SOLAR_SYSTEM_SIZE / 5 * (0.75 + 0.25 * ring))) + (ring + 1) * SOLAR_SYSTEM_SIZE * (0.75 + 0.25 * ring / 4));
                     Vector2 orbitalVelocity = gravitationalLaw.orbitalVelocity(location, sun);
-                    int mass = rand.Next(STARTING_PLAYER_MASS * (int) Math.Pow(ring, 2) + STARTING_PLAYER_MASS / 5, STARTING_PLAYER_MASS * (int) Math.Pow(ring, 2) * 2 + STARTING_PLAYER_MASS / 3);
+                    int mass = rand.Next(STARTING_PLAYER_MASS * (int)Math.Pow(ring, 2) + STARTING_PLAYER_MASS / 5, STARTING_PLAYER_MASS * (int)Math.Pow(ring, 2) * 2 + STARTING_PLAYER_MASS / 3);
                     rings.Add(new RoundObject(location, orbitalVelocity, mass, DEFAULT_DENSITY));
                 }
             }

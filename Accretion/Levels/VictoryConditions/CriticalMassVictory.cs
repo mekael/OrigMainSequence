@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayObjects;
+﻿using Accretion.GameplayObjects;
 
 namespace Accretion.Levels.VictoryConditions
 {
-    class CriticalMassVictory : VictoryCondition
+    internal class CriticalMassVictory : VictoryCondition
     {
         private int criticalMass;
 

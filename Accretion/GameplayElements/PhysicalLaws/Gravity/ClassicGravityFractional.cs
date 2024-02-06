@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace Accretion.GameplayElements.PhysicalLaws.Collision
 {
-    class ClassicGravityFractional : ClassicGravity
+    internal class ClassicGravityFractional : ClassicGravity
     {
         private float reductionFactor = 200f;
 

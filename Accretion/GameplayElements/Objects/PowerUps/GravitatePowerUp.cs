@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Accretion.GameplayElements.PhysicalLaws.Collision;
+using Accretion.GameplayObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Accretion.GameplayObjects;
-using Accretion.GameplayElements.PhysicalLaws.Collision;
 
 namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    class GravitatePowerUp : PowerUp
+    internal class GravitatePowerUp : PowerUp
     {
         private IGravitationalLaw gravitationalLaw;
         protected SoundEffect soundEffect;
@@ -28,7 +24,8 @@ namespace Accretion.GameplayElements.Objects.PowerUps
             return displayChar;
         }
 
-        public GravitatePowerUp(int uses) : base(uses) { 
+        public GravitatePowerUp(int uses) : base(uses)
+        {
             this.gravitationalLaw = new ClassicGravityFractional(this.gravitationalFactor());
             this.soundEffect = AccretionGame.staticContent.Load<SoundEffect>("6142__noisecollector__beam02");
         }
@@ -92,6 +89,4 @@ namespace Accretion.GameplayElements.Objects.PowerUps
             return "Graviton Capacitor";
         }
     }
-
-
 }

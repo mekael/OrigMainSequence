@@ -1,5 +1,3 @@
-using System;
-
 namespace Accretion
 {
 #if WINDOWS || XBOX
@@ -18,4 +16,3 @@ namespace Accretion
     }
 #endif
 }
-

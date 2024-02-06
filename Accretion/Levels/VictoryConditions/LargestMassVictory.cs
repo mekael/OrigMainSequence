@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using Accretion.GameplayElements.Objects;
+﻿using Accretion.GameplayElements.Objects;
 
 namespace Accretion.Levels.VictoryConditions
 {
-    class LargestMassVictory : VictoryCondition
+    internal class LargestMassVictory : VictoryCondition
     {
         public override GameStatus gameStatus(GameplayObjects.Field field)
         {

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.Levels.VictoryConditions;
-using Accretion.GameplayElements.PhysicalLaws.Collision;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Debug : Level
+    internal class Debug : Level
     {
         public Debug()
         {

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.Levels.VictoryConditions;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class SpiralArms : Heliocentric
+    internal class SpiralArms : Heliocentric
     {
-        new protected const int SOLAR_SYSTEM_SIZE = 120000;
+        protected new const int SOLAR_SYSTEM_SIZE = 120000;
         protected const int INITIAL_ZOOM = 400;
 #if XBOX
         new protected const int MASSES = 1100;
@@ -28,7 +24,7 @@ namespace Accretion.Levels
             return "Many problems, one solution: SWALLOW THE SUN! No really, that's the only way to beat the level.";
         }
 
-        public override string  defeatText()
+        public override string defeatText()
         {
             return null;
         }
@@ -49,7 +45,7 @@ namespace Accretion.Levels
                 Vector2 position2d = new Vector2(rand.Next(-SOLAR_SYSTEM_SIZE, SOLAR_SYSTEM_SIZE), rand.Next(-SOLAR_SYSTEM_SIZE / 8, SOLAR_SYSTEM_SIZE / 8));
                 int mass = (int)(rand.Next(1, STARTING_OBJECT_MAX_MASS) * Math.Pow(position2d.Length() * Math.Sqrt(2) / SOLAR_SYSTEM_SIZE, 2));
                 Vector2 orbitalVelocity = gravitationalLaw.orbitalVelocity(position2d, gravitationalObjects().First());
-                SpaceObject spaceObject = new RoundObject(position2d, orbitalVelocity, mass, DEFAULT_DENSITY);                
+                SpaceObject spaceObject = new RoundObject(position2d, orbitalVelocity, mass, DEFAULT_DENSITY);
                 if (position2d.Length() + spaceObject.getRadius() < sun.getRadius() * 4 || spaceObject.hasCollidedWith(player))
                 {
                     i--;

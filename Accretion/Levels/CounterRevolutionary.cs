@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
+﻿using Accretion.GameplayElements.Objects;
 using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class CounterRevolutionary : Heliocentric
+    internal class CounterRevolutionary : Heliocentric
     {
-        new protected const int SOLAR_SYSTEM_SIZE = 50000;
+        protected new const int SOLAR_SYSTEM_SIZE = 50000;
+
         public CounterRevolutionary() : base()
         {
             this.music = null;

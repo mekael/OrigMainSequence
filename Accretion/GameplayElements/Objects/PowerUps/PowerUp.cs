@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayObjects;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Accretion.GameplayObjects;
+using Accretion.GraphicHelpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Accretion.GraphicHelpers;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    abstract class PowerUp : SpaceObject
+    internal abstract class PowerUp : SpaceObject
     {
         protected int uses;
         protected DateTime lastUsed;
@@ -72,7 +68,7 @@ namespace Accretion.GameplayElements.Objects.PowerUps
         public abstract SoundEffect getSoundEffect();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="player"></param>
         /// <param name="field"></param>
@@ -101,7 +97,6 @@ namespace Accretion.GameplayElements.Objects.PowerUps
 
         public override void draw(SpriteBatch spriteBatch, Vector2 cameraLocation, float zoomLevel, Vector2? lightSource, int windowWidth, int windowHeight)
         {
-
             float rotation = (float)Math.PI;
             if (lightSource.HasValue)
             {

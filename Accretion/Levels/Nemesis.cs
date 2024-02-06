@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
-using Accretion.GameplayElements.PhysicalLaws.Collision;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.Levels.LevelGenerationHelpers;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Nemesis : Heliocentric
+    internal class Nemesis : Heliocentric
     {
         private const int NEMESIS_INTIAL_SPEED_DIVISOR = -5455; //divide solar system size by this to get initial speed of the nemesis
 #if WINDOWS_PHONE

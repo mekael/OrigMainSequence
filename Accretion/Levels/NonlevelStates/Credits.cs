@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
+﻿using Accretion.GameplayElements.Objects;
 
 namespace Accretion.Levels.NonlevelStates
 {
-    class Credits : Level
+    internal class Credits : Level
     {
         public override PlayerObject player()
         {

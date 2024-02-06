@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Accretion.GameplayElements.PhysicalLaws.Collision;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.Levels.LevelGenerationHelpers;
-using Accretion.GameplayElements.Objects;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class TwinPeaks : Heliocentric
+    internal class TwinPeaks : Heliocentric
     {
 #if WINDOWS
         new protected const int MASSES = 6000;
@@ -19,7 +14,7 @@ namespace Accretion.Levels
         new protected const int SUN_MASS = 7000;
         private const float RING_MULTIPLIER = 4f;
         private const double FRACTION_OF_MASS_TO_PUT_IN_RING = .8d;
-        
+
 #elif XBOX
         new protected const int MASSES = 1000;
         new protected const int SOLAR_SYSTEM_SIZE = 83000;

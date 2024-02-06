@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Accretion.GameplayElements.Objects;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GameplayElements.PhysicalLaws.Collision;
 using Accretion.Levels.LevelGenerationHelpers;
 using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Heliocentric : Level
+    internal class Heliocentric : Level
     {
 #if WINDOWS
         protected const int MASSES = 6000;
@@ -42,7 +39,7 @@ namespace Accretion.Levels
 
         public override string openingText()
         {
-            return "Hey look, a star! Time to practice some orbital mechanics." 
+            return "Hey look, a star! Time to practice some orbital mechanics."
                 + Environment.NewLine + Environment.NewLine
                 + "Become the largest object to win";
         }

@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Media;
 using Accretion.Levels.VictoryConditions;
+using Microsoft.Xna.Framework.Media;
 
 namespace Accretion.AudioHelpers
 {
-    class SimplifiedMusicPlayer
+    internal class SimplifiedMusicPlayer
     {
-        public static List<String> songs = new List<String>() 
+        public static List<String> songs = new List<String>()
         {
             "BrokeForFree-NightOwl",
             "BrokeForFree-DayBird",
@@ -31,8 +27,8 @@ namespace Accretion.AudioHelpers
         private static DateTime lastManualSongStarted = DateTime.MinValue;
 
         static SimplifiedMusicPlayer()
-        {            
-            MediaPlayer.MediaStateChanged += delegate(object sender, EventArgs e)
+        {
+            MediaPlayer.MediaStateChanged += delegate (object sender, EventArgs e)
             {
                 ContinuePlaying();
             };
@@ -60,7 +56,7 @@ namespace Accretion.AudioHelpers
         }
 
         //plays the next song if no song is currently playing
-        static void ContinuePlaying()
+        private static void ContinuePlaying()
         {
             if (MediaPlayer.State != MediaState.Playing)
             {
@@ -76,7 +72,7 @@ namespace Accretion.AudioHelpers
             }
         }
 
-        static void PlayNextPlaylistSong()
+        private static void PlayNextPlaylistSong()
         {
             if (DateTime.Now - lastManualSongStarted > TimeSpan.FromSeconds(0.5))
             {

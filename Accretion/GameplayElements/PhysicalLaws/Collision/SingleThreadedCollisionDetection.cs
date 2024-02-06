@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Accretion.GameplayElements.Objects;
 using Microsoft.Xna.Framework;
-using Accretion.GameplayElements.Objects;
-using System.Threading;
-using System.Collections;
+
 #if WINDOWS
 using System.Threading.Tasks;
 #endif
@@ -81,18 +76,18 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                             {
                                 if (i >= 0 && i < rootOfPartitions && j >= 0 && j < rootOfPartitions)
                                 {
-                                        BoundingBox boundingBox = partitions[i,j];
+                                    BoundingBox boundingBox = partitions[i, j];
 
-                                        if (boundingBox.Intersects(currentObject.boundingSphere))
-                                        {
-                                            partitionedObjects[i][j].Add(currentObject);
-                                        }
+                                    if (boundingBox.Intersects(currentObject.boundingSphere))
+                                    {
+                                        partitionedObjects[i][j].Add(currentObject);
+                                    }
                                 }
                             }
                         }
                     }
-                }             
-        
+                }
+
                 foreach (List<SpaceObject>[] partitionRow in partitionedObjects)
                 {
                     foreach (List<SpaceObject> spaceObjects in partitionRow)
@@ -110,7 +105,7 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
         }
 
         private bool detectCollisionsInSinglePartition(List<SpaceObject> spaceObjects)
-        {            
+        {
             //detect collisions
             //TODO: heavily optimize this so fewer comparisons are needed
             Boolean collision = false;
@@ -132,18 +127,17 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                                 //TODO: handle the case where both are of similar size
                                 //if (!spaceObject2.pendingRemoval && !spaceObject1.pendingRemoval)
                                 //{
-                                    if (spaceObject1.getMass() >= spaceObject2.getMass())
-                                    {
-                                        spaceObject1.absorbAndConserveMomentum(spaceObject2);
-                                    }
-                                    else
-                                    {
-                                        spaceObject2.absorbAndConserveMomentum(spaceObject1);
-                                    }
+                                if (spaceObject1.getMass() >= spaceObject2.getMass())
+                                {
+                                    spaceObject1.absorbAndConserveMomentum(spaceObject2);
+                                }
+                                else
+                                {
+                                    spaceObject2.absorbAndConserveMomentum(spaceObject1);
+                                }
 
-                                    collision = true;
+                                collision = true;
                                 //}
-    
                             }
                         }
                     }
@@ -178,7 +172,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                         if (spaceObject.getFieldLocation().X > bound.Y)
                         {
                             bound.Y = spaceObject.getFieldLocation().X;
-
                         }
                     }
 
@@ -194,7 +187,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                         if (spaceObject.getFieldLocation().Y > bound.Z)
                         {
                             bound.Z = spaceObject.getFieldLocation().Y;
-
                         }
                     }
                 }
@@ -204,7 +196,7 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
         }
 
         public void Dispose()
-        {            
+        {
         }
     }
 }

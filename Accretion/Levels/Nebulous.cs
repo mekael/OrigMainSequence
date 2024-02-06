@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GameplayElements.Objects.PowerUps;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Nebulous : Level
+    internal class Nebulous : Level
     {
 #if WINDOWS
         protected const int MASSES = 6000;
@@ -26,6 +22,7 @@ namespace Accretion.Levels
         protected const int STARTING_OBJECT_MAX_MASS = 2;
         protected const int STARTING_PLAYER_MASS = 40;
 #endif
+
         public Nebulous()
         {
             this.victoryCondition = new VictoryConditions.CriticalMassVictory(this.player().getMass() + (int)(MASSES * STARTING_OBJECT_MAX_MASS * 0.53));

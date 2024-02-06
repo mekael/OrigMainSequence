@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace Accretion.GraphicHelpers
 {
-    class CreditsHelper
+    internal class CreditsHelper
     {
         public static int increment = 0;
 
@@ -85,7 +81,7 @@ namespace Accretion.GraphicHelpers
 
         public static void draw(SpriteFont font, SpriteBatch spriteBatch, int screenWidth, int screenHeight)
         {
-            displayScrollingMessage(credits, font,  spriteBatch, screenWidth, screenHeight);
+            displayScrollingMessage(credits, font, spriteBatch, screenWidth, screenHeight);
         }
 
         public static void displayScrollingMessage(List<string> messages, SpriteFont font, SpriteBatch spriteBatch, int screenWidth, int screenHeight)

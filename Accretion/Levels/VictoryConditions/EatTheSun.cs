@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayObjects;
 using Accretion.GameplayElements.Objects;
+using Accretion.GameplayObjects;
 using System.Collections.ObjectModel;
 
 namespace Accretion.Levels.VictoryConditions
 {
-    class EatTheSun : VictoryCondition
+    internal class EatTheSun : VictoryCondition
     {
         public override GameStatus gameStatus(Field field)
         {

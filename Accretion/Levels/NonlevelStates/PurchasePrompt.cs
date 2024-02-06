@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Accretion.Levels.NonlevelStates
 {
-    class PurchasePrompt : Level
+    internal class PurchasePrompt : Level
     {
         public override GameplayElements.Objects.PlayerObject player()
         {

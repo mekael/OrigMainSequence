@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Media;
-
-namespace Accretion.AudioHelpers
+﻿namespace Accretion.AudioHelpers
 {
-    class BeatDetector
+    internal class BeatDetector
     {
         private static double previousBassIntensity = 1;
 
@@ -57,8 +51,8 @@ namespace Accretion.AudioHelpers
             //windows phone doesn't support the music visualizer api. try putting some random junk here to make stuff still pulsate.
             float fakePower = (DateTime.Now.Millisecond % 750) / 750f;
             if (fakePower < 0.3f)
-            { 
-                fakePower = 0.45f; 
+            {
+                fakePower = 0.45f;
             }
             else if (fakePower > 0.65f)
             {

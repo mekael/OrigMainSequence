@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Accretion.GraphicHelpers
 {
-    class MessageWriter
+    internal class MessageWriter
     {
         private const int MAX_STRING_CACHE_SIZE = 1000;
-        private static Dictionary<string,List<String>> cache = new Dictionary<string,List<String>>();
+        private static Dictionary<string, List<String>> cache = new Dictionary<string, List<String>>();
 
 #if XBOX
         private const double MAX_USABLE_SCREEN_FRACTION = 0.80;
@@ -52,7 +49,7 @@ namespace Accretion.GraphicHelpers
                 }
 
                 List<string> splitMessage = new List<string>();
-                string[] originalLines = message.Split(new string[] { Environment.NewLine, "\n"}, StringSplitOptions.None);
+                string[] originalLines = message.Split(new string[] { Environment.NewLine, "\n" }, StringSplitOptions.None);
                 int usableScreenWidth = (int)(screenWidth * MAX_USABLE_SCREEN_FRACTION);
 
                 foreach (string originalLine in originalLines)

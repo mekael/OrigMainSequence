@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Accretion.GameplayElements.Objects;
-using Accretion.GraphicHelpers;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Accretion.Input
 {
-    class MouseHelper
+    internal class MouseHelper
     {
         private int oldMouseScrollState = Mouse.GetState().ScrollWheelValue;
 

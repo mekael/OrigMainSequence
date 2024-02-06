@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Accretion.Levels.NonlevelStates
+﻿namespace Accretion.Levels.NonlevelStates
 {
-    class Quit : Level
+    internal class Quit : Level
     {
         public override GameplayElements.Objects.PlayerObject player()
         {

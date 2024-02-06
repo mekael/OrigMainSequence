@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Accretion.AudioHelpers;
+using Accretion.Input;
 using Accretion.Levels;
 using Accretion.Levels.NonlevelStates;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Accretion.AudioHelpers;
-using Accretion.Input;
-using Microsoft.Xna.Framework.GamerServices;
 
 namespace Accretion.GraphicHelpers
 {
-    class LevelSelectMenuHelper
+    internal class LevelSelectMenuHelper
     {
         private static int levelNumber = 0;
         private static SpriteFont font;
@@ -45,14 +40,19 @@ namespace Accretion.GraphicHelpers
             {
                 case 0:
                     return new Introduction();
+
                 case 1:
                     return new Heliocentric();
+
                 case 2:
                     return new Rings();
+
                 case 3:
                     return new BinaryStar();
+
                 case 4:
                     return new TheFunnel();
+
                 case 5:
                     if (trialMode)
                     {
@@ -127,11 +127,14 @@ namespace Accretion.GraphicHelpers
                     }
                 case 13:
                     return new Cancel();
+
                 case 14:
                     CreditsHelper.increment = 0;
-                    return new Credits();                    
+                    return new Credits();
+
                 case 15:
                     return new Quit();
+
                 default:
                     throw new IndexOutOfRangeException(String.Format("Unable to load level {0}", levelNumber));
             }
@@ -154,7 +157,7 @@ namespace Accretion.GraphicHelpers
             "Deconstructionist",
             "~Cancel~",
             "~Credits~",
-            "~Exit~"            
+            "~Exit~"
         };
 
         public static Level gamePadLevelSelect(GamePadState gamePadState, GamePadState previousGamePadState)
@@ -180,7 +183,7 @@ namespace Accretion.GraphicHelpers
         {
             List<Vector2> touches = TouchscreenHelper.getTaps();
             if (touches != null && touches.Count > 0)
-            {         
+            {
                 for (int i = 0; i <levelNames.Count; i++)
                 {
                     BoundingBox? messageBounds = getMessageBoundingBox(i);
@@ -284,48 +287,47 @@ namespace Accretion.GraphicHelpers
             else
             {
 #endif
-                spriteBatch.DrawString(font, "Levels:", getMessageLocation(0, scrollOffset), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-                for (int i = 0; i < levelNames.Count; i++)
+            spriteBatch.DrawString(font, "Levels:", getMessageLocation(0, scrollOffset), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+            for (int i = 0; i < levelNames.Count; i++)
+            {
+                Vector2 messageSize = font.MeasureString(levelNames[i]);
+                Vector2 messageLocation = getMessageLocation(i + 1, scrollOffset);  //+1 due to the "levels" header
+                float rightEdge = messageLocation.X + messageSize.X;
+                if (rightEdge > furtherRightMenuText)
                 {
-                    Vector2 messageSize = font.MeasureString(levelNames[i]);
-                    Vector2 messageLocation = getMessageLocation(i+1, scrollOffset);  //+1 due to the "levels" header
-                    float rightEdge = messageLocation.X + messageSize.X;
-                    if (rightEdge > furtherRightMenuText)
-                    {
-                        furtherRightMenuText = rightEdge;
-                    }
-
-                    spriteBatch.DrawString(font, levelNames[i], messageLocation, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-                    
-                    //draw the cursor
-                    if (i == levelNumber)
-                    {
-                        float cursorZoom = .25f * (float)BeatDetector.getDecayingBassPower();
-                        cursorZoom = Math.Max(cursorZoom, 0.08f); //make sure the cursor doesn't get TOO small
-                        spriteBatch.Draw(cursor, MenuItemSpacing * (i+1+scrollOffset) + new Vector2(messageSize.X + 10, messageSize.Y / 2) + TopLeftOffset.Value, null, Color.Red, 0f, new Vector2(0, cursor.Height) / 2, cursorZoom, SpriteEffects.None, 0);
-                    }
+                    furtherRightMenuText = rightEdge;
                 }
 
-                //draw the ▲ or ▼ hints if the menu extends past the screen
-                if (getMessageLocation(0, scrollOffset).Y < spriteBatch.GraphicsDevice.DisplayMode.Height * .15)
-                {
-                    spriteBatch.DrawString(font, "^", new Vector2(spriteBatch.GraphicsDevice.DisplayMode.Width * 0.12f, getMessageLocation(0, 0).Y), Color.Red, 0f, new Vector2(scrollCursorSize.X, 0), 2, SpriteEffects.None, 0);
-                }
-                if (getMessageLocation(levelNames.Count, scrollOffset).Y > spriteBatch.GraphicsDevice.DisplayMode.Height * .9)
-                {
-                    //draw a "^" but flip it vertically
-                    spriteBatch.DrawString(font, "^", new Vector2(spriteBatch.GraphicsDevice.DisplayMode.Width * 0.12f, spriteBatch.GraphicsDevice.DisplayMode.Height * 0.87f - scrollCursorSize.Y / 2), Color.Red, 0f, new Vector2(scrollCursorSize.X, scrollCursorSize.Y / 2), 2, SpriteEffects.FlipVertically, 0);
+                spriteBatch.DrawString(font, levelNames[i], messageLocation, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
 
+                //draw the cursor
+                if (i == levelNumber)
+                {
+                    float cursorZoom = .25f * (float)BeatDetector.getDecayingBassPower();
+                    cursorZoom = Math.Max(cursorZoom, 0.08f); //make sure the cursor doesn't get TOO small
+                    spriteBatch.Draw(cursor, MenuItemSpacing * (i + 1 + scrollOffset) + new Vector2(messageSize.X + 10, messageSize.Y / 2) + TopLeftOffset.Value, null, Color.Red, 0f, new Vector2(0, cursor.Height) / 2, cursorZoom, SpriteEffects.None, 0);
                 }
+            }
+
+            //draw the ▲ or ▼ hints if the menu extends past the screen
+            if (getMessageLocation(0, scrollOffset).Y < spriteBatch.GraphicsDevice.DisplayMode.Height * .15)
+            {
+                spriteBatch.DrawString(font, "^", new Vector2(spriteBatch.GraphicsDevice.DisplayMode.Width * 0.12f, getMessageLocation(0, 0).Y), Color.Red, 0f, new Vector2(scrollCursorSize.X, 0), 2, SpriteEffects.None, 0);
+            }
+            if (getMessageLocation(levelNames.Count, scrollOffset).Y > spriteBatch.GraphicsDevice.DisplayMode.Height * .9)
+            {
+                //draw a "^" but flip it vertically
+                spriteBatch.DrawString(font, "^", new Vector2(spriteBatch.GraphicsDevice.DisplayMode.Width * 0.12f, spriteBatch.GraphicsDevice.DisplayMode.Height * 0.87f - scrollCursorSize.Y / 2), Color.Red, 0f, new Vector2(scrollCursorSize.X, scrollCursorSize.Y / 2), 2, SpriteEffects.FlipVertically, 0);
+            }
 #if XBOX
             }
 #endif
-            
+
 #if XBOX
             String title;
             if (Guide.IsTrialMode)
             {
-             title = "Main Sequence trial";   
+             title = "Main Sequence trial";
             }
             else
             {
@@ -379,7 +381,7 @@ namespace Accretion.GraphicHelpers
                 messageLocation += TopLeftOffset.Value;
             }
 
-            return  messageLocation;
+            return messageLocation;
         }
 
         private static Vector2 calculateTopLeftOffset(DisplayMode displayMode)
@@ -399,7 +401,7 @@ namespace Accretion.GraphicHelpers
             }
             else
             {
-                return new BoundingBox(new Vector3(getMessageLocation(messageNumber+1, scrollOffset), 0), new Vector3(getMessageLocation(messageNumber+1, scrollOffset) + font.MeasureString(levelNames[messageNumber]), 0));
+                return new BoundingBox(new Vector3(getMessageLocation(messageNumber + 1, scrollOffset), 0), new Vector3(getMessageLocation(messageNumber + 1, scrollOffset) + font.MeasureString(levelNames[messageNumber]), 0));
             }
         }
     }

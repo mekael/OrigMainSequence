@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
-using Accretion.Levels.VictoryConditions;
+﻿using Accretion.GameplayElements.Objects;
+using Accretion.GameplayElements.Objects.PowerUps;
 using Accretion.GraphicHelpers;
 using Accretion.Levels.LevelGenerationHelpers;
-using Accretion.GameplayElements.Objects.PowerUps;
+using Accretion.Levels.VictoryConditions;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class Introduction : Level
+    internal class Introduction : Level
     {
 #if WINDOWS
         protected const int MASSES = 2500;

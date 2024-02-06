@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Accretion.GraphicHelpers;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
-using Accretion.AudioHelpers;
-using Microsoft.Xna.Framework.Input;
-using Accretion.Input;
+﻿using Accretion.AudioHelpers;
 using Accretion.GameplayElements.Objects.PowerUps;
 using Accretion.GameplayObjects;
+using Accretion.GraphicHelpers;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace Accretion.GameplayElements.Objects
 {
-    class PlayerObject : RoundObject
+    internal class PlayerObject : RoundObject
     {
         public readonly double baseDensity;
         public PowerUp powerUp;
@@ -61,7 +55,7 @@ namespace Accretion.GameplayElements.Objects
             if (this.powerUp != null)
             {
                 this.powerUp.use(this, ref field);
-            }            
+            }
         }
 
         public void setPowerUp(PowerUp powerUp)
@@ -97,7 +91,7 @@ namespace Accretion.GameplayElements.Objects
             //TODO: only recreate the helper line texture if the zoom level or player radius has changed
             //if (zoomLevel != oldZoomLevel || player.getRadius() != oldPlayerRadius)
             //{
-                helperLineTexture = LineCreator.CreateLine((int)(this.getRadius() / zoomLevel), Math.Max((int)(this.getRadius() / Math.Sqrt(zoomLevel) / 2), (int)(this.getRadius() / zoomLevel * 2)), Color.Purple, spriteBatch.GraphicsDevice);
+            helperLineTexture = LineCreator.CreateLine((int)(this.getRadius() / zoomLevel), Math.Max((int)(this.getRadius() / Math.Sqrt(zoomLevel) / 2), (int)(this.getRadius() / zoomLevel * 2)), Color.Purple, spriteBatch.GraphicsDevice);
             //    oldZoomLevel = zoomLevel;
             //    oldPlayerRadius = player.getRadius();
             //}
@@ -164,7 +158,7 @@ namespace Accretion.GameplayElements.Objects
                 directionToEject.Normalize();
                 Vector2 ejectionVector = directionToEject * this.ejectionSpeed + this.getVelocity();
 
-                //Put it in the same location as the ejecting object for now; we will move it so it doesn't overlap the 
+                //Put it in the same location as the ejecting object for now; we will move it so it doesn't overlap the
                 //original object once the radius is calculated (part of the constructor)
                 RoundObject ejectedObject = new RoundObject(this.getFieldLocation(), ejectionVector, massToEject, this.getDensity());
                 ejectedObject.setFieldLocation(this.getFieldLocation() + ((ejectedObject.getRadius() + this.getRadius() + 2) * directionToEject));

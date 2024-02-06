@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
-using Accretion.Levels.VictoryConditions;
 using Accretion.GameplayElements.PhysicalLaws.Collision;
-using Accretion.Levels.LevelGenerationHelpers;
+using Accretion.Levels.VictoryConditions;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class WhirlPool : Heliocentric
+    internal class WhirlPool : Heliocentric
     {
         //overrides won't be useful here since we're using all the base class functions
 
@@ -77,7 +72,7 @@ namespace Accretion.Levels
             sun.setMass(sun.getMass() / sunMassDivisor);
             sun.setDensity(sun.getDensity() / sunMassDivisor);
             sun.unmoveable = true;
-            return new List<SpaceObject>{sun};
+            return new List<SpaceObject> { sun };
         }
     }
 }

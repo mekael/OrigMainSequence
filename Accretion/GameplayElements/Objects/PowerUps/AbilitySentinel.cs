@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Accretion.GameplayElements.Objects.PowerUps
+﻿namespace Accretion.GameplayElements.Objects.PowerUps
 {
     public class AbilitySentinel
     {
@@ -63,7 +58,7 @@ namespace Accretion.GameplayElements.Objects.PowerUps
             lock (lockObject)
             {
                 while (this.fireEvents.Count > 0 && DateTime.UtcNow > this.fireEvents.Peek().startTime + this.abilityDuration)
-                {              
+                {
                     this.fireEvents.Dequeue();
                     expirations++;
                 }

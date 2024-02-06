@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Accretion.GameplayElements.Objects;
-using System.Threading;
-using System.Collections;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.GameplayElements.PhysicalLaws.Collision
 {
@@ -19,8 +13,10 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
         private List<Thread> threads;
         private List<AutoResetEvent> workerBlockers;
         private List<AutoResetEvent> mainThreadBlockers;
+
         //private Queue<List<SpaceObject>> partitionQueue = new Queue<List<SpaceObject>>();
         private Queue<List<SpaceObject>[]> partitionQueue = new Queue<List<SpaceObject>[]>();
+
         private readonly object queueLock = new object();
 
         public ThreadQueueCollisionDetection()
@@ -287,7 +283,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                         if (spaceObject.getFieldLocation().X > bound.Y)
                         {
                             bound.Y = spaceObject.getFieldLocation().X;
-
                         }
                     }
 
@@ -303,7 +298,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                         if (spaceObject.getFieldLocation().Y > bound.Z)
                         {
                             bound.Z = spaceObject.getFieldLocation().Y;
-
                         }
                     }
                 }

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Accretion.Input;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GameplayElements.PhysicalLaws.Collision;
-using Accretion.GraphicHelpers;
+using Accretion.Input;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
 
 namespace Accretion.GameplayObjects
 {
-    class Field : IDisposable
+    internal class Field : IDisposable
     {
         public SpaceObject cameraLockedObject;
         public float initialZoomLevel;
@@ -28,11 +23,11 @@ namespace Accretion.GameplayObjects
         private readonly Vector2 DEFAULT_CAMERA_LOCATION = Vector2.Zero;
         private Vector2 cameraWindowCenter;
         private DateTime? levelStart = null;
-        private static readonly TimeSpan initialZoomInInterval = TimeSpan.FromSeconds(2);        
+        private static readonly TimeSpan initialZoomInInterval = TimeSpan.FromSeconds(2);
         private MouseHelper mouseHandler = new MouseHelper();
         private bool doneIntroZooming = false; //a flag to note when we are done with level-start zoom in effect
         private float? lastAutoZoom;
-        
+
 #if WINDOWS
         public ICollisionDetection collisionDetection = new TPLCollisionDetection();
 #elif XBOX
@@ -192,7 +187,7 @@ namespace Accretion.GameplayObjects
                         }
                     }
                     else
-                    {                        
+                    {
                         //if anything went off the edge, kill it..
                         if (currentObject.getFieldLocation().X < mapLimits.Left ||
                             currentObject.getFieldLocation().X > mapLimits.Right ||
@@ -241,8 +236,6 @@ namespace Accretion.GameplayObjects
             }
         }
 
-        
-
         public Vector2 getScreenLocation(SpaceObject spaceObject)
         {
             return (spaceObject.getFieldLocation() - cameraWindowCenter) / zoomLevel;
@@ -252,7 +245,7 @@ namespace Accretion.GameplayObjects
         {
             if (cameraLockedObject != null && !float.IsNaN(cameraLockedObject.getFieldLocation().X) && !float.IsNaN(cameraLockedObject.getFieldLocation().Y))
             {
-                cameraWindowCenter = this.cameraLockedObject.getFieldLocation()- new Vector2(spriteBatch.GraphicsDevice.Viewport.Width, spriteBatch.GraphicsDevice.Viewport.Height) * zoomLevel / 2;
+                cameraWindowCenter = this.cameraLockedObject.getFieldLocation() - new Vector2(spriteBatch.GraphicsDevice.Viewport.Width, spriteBatch.GraphicsDevice.Viewport.Height) * zoomLevel / 2;
             }
 
             //if (player != null && player.getMass() > 0)
@@ -275,7 +268,6 @@ namespace Accretion.GameplayObjects
                 //});
             }
 
-
             foreach (SpaceObject currentObject in this.collisionObjects)
             {
                 if (currentObject != null)
@@ -287,7 +279,7 @@ namespace Accretion.GameplayObjects
 
         //TODO: this is a performance nightmare. wtf.
         private Vector2? findDistanceWeightedAverageLightSource(SpaceObject spaceObject, List<SpaceObject> lightSources)
-        {            
+        {
             if (lightSources == null || lightSources.Count < 1)
             {
                 return null;
@@ -308,9 +300,9 @@ namespace Accretion.GameplayObjects
                         float distance = (spaceObject.getFieldLocation() - lightSource.getFieldLocation()).LengthSquared();
                         if (distance != 0 && !float.IsNaN(distance))
                         {
-                        float weight = 1 / distance;
-                        weights += weight;
-                        weightedSum += (lightSource.getFieldLocation()* weight);
+                            float weight = 1 / distance;
+                            weights += weight;
+                            weightedSum += (lightSource.getFieldLocation() * weight);
                         }
                     }
 

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
-using Microsoft.Xna.Framework;
-using Accretion.Levels.VictoryConditions;
-using Accretion.GameplayElements.PhysicalLaws.Collision;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.Levels.LevelGenerationHelpers;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class BinaryStar : Heliocentric
+    internal class BinaryStar : Heliocentric
     {
         //construct a virtual mass to represent the two suns when calcuating orbits
-        SpaceObject virtualSun = new RoundObject(Vector2.Zero, Vector2.Zero, SUN_MASS * 2, DEFAULT_DENSITY);
+        private SpaceObject virtualSun = new RoundObject(Vector2.Zero, Vector2.Zero, SUN_MASS * 2, DEFAULT_DENSITY);
+
         protected const int SUN_VELOCITY = 130;
 #if WINDOWS_PHONE
         new protected const int MASSES = 800;
@@ -42,7 +37,7 @@ namespace Accretion.Levels
             RoundRadiatingObject sun = new RoundRadiatingObject(new Vector2(SOLAR_SYSTEM_SIZE / 11, 0), new Vector2(0, -SUN_VELOCITY), SUN_MASS, DEFAULT_DENSITY * 2);
             RoundRadiatingObject sun2 = new RoundRadiatingObject(new Vector2(-SOLAR_SYSTEM_SIZE / 11, 0), new Vector2(0, SUN_VELOCITY), SUN_MASS, DEFAULT_DENSITY * 2);
 
-            return new List<SpaceObject>(new SpaceObject[]{sun, sun2});
+            return new List<SpaceObject>(new SpaceObject[] { sun, sun2 });
         }
 
         public override List<SpaceObject> spaceObjects()

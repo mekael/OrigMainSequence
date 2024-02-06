@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GraphicHelpers
 {
-    class LineCreator
+    internal class LineCreator
     {
         public static void DrawLine(int thickness, int length, Vector2 screenLocation, Vector2 angle, Color color, SpriteBatch spriteBatch)
         {

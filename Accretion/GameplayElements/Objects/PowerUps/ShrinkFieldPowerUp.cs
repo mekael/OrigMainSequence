@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Audio;
-using Accretion.GameplayObjects;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Accretion.GameplayObjects;
 using Microsoft.Xna.Framework;
-using Accretion.GraphicHelpers;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    class ShrinkFieldPowerUp : PowerUp
+    internal class ShrinkFieldPowerUp : PowerUp
     {
         protected static SoundEffect soundEffect;
         private AbilitySentinel abilitySentinel;
@@ -46,13 +40,12 @@ namespace Accretion.GameplayElements.Objects.PowerUps
                 double rampDownFactor = Math.Min((DateTime.UtcNow - this.duration - abilitySentinel.getLastUsedTimeUTC() + TimeSpan.FromSeconds(2)).TotalMilliseconds / 2000, 1);
                 double timeRampFactor = Math.Max(rampUpFactor, rampDownFactor);
 
-
                 //todo: parallelize
                 foreach (SpaceObject spaceObject in field.getSpaceObjects())
                 {
                     if (spaceObject != null && !spaceObject.pendingRemoval && !spaceObject.hasGravity && spaceObject != player)
                     {
-                        double distanceRampFactor = Math.Min(player.distanceFrom(spaceObject) / 30000 + 0.1, 1);                        
+                        double distanceRampFactor = Math.Min(player.distanceFrom(spaceObject) / 30000 + 0.1, 1);
                         spaceObject.setSecretMassModifier(Math.Max(timeRampFactor, distanceRampFactor));
                     }
                 }

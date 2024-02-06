@@ -1,16 +1,10 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-
-namespace Accretion.GameplayElements.Objects.PowerUps
+﻿namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    class RepelPowerUp : GravitatePowerUp
+    internal class RepelPowerUp : GravitatePowerUp
     {
-        public RepelPowerUp(int uses) : base(uses) {}
+        public RepelPowerUp(int uses) : base(uses)
+        {
+        }
 
         protected static char displayChar;
 

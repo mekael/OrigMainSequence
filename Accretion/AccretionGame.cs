@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Accretion.AudioHelpers;
-using Accretion.Input;
 using Accretion.GameplayElements.Objects;
 using Accretion.GameplayObjects;
 using Accretion.GraphicHelpers;
+using Accretion.Input;
 using Accretion.Levels;
 using Accretion.Levels.NonlevelStates;
 using Accretion.Levels.VictoryConditions;
@@ -13,9 +11,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Input.Touch;
-using System.Threading;
-using Microsoft.Xna.Framework.GamerServices;
 
 namespace Accretion
 {
@@ -24,27 +19,28 @@ namespace Accretion
     /// </summary>
     public class AccretionGame : Microsoft.Xna.Framework.Game, IDisposable
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;                
-        GameStatus gameStatus;
-        Song music;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private GameStatus gameStatus;
+        private Song music;
 
-        Field gameField;
-        Level level;
-        VictoryCondition victoryCondition;
+        private Field gameField;
+        private Level level;
+        private VictoryCondition victoryCondition;
 
-        KeyboardState previousKeyboardState = Keyboard.GetState();
-        PlayerIndex? playerIndex = null;
-        GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
-        GamePadState previousGamePadState = GamePad.GetState(PlayerIndex.One);
-        MouseState previousMouseState = Mouse.GetState();
-        MouseHelper mouseHandler = new MouseHelper();
+        private KeyboardState previousKeyboardState = Keyboard.GetState();
+        private PlayerIndex? playerIndex = null;
+        private GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+        private GamePadState previousGamePadState = GamePad.GetState(PlayerIndex.One);
+        private MouseState previousMouseState = Mouse.GetState();
+        private MouseHelper mouseHandler = new MouseHelper();
 
-        const int MAX_ZOOM = 10000;
-        const int MIN_ZOOM = 1;
+        private const int MAX_ZOOM = 10000;
+        private const int MIN_ZOOM = 1;
 
         //yuck, this is hacky
         public static ContentManager staticContent;
+
         public static SpriteFont font;
 
         public AccretionGame()
@@ -119,7 +115,7 @@ namespace Accretion
                 this.level = new MenuBackground();
             }
 
-            loadLevel(this.level);       
+            loadLevel(this.level);
 
             if (this.music != null)
             {
@@ -176,6 +172,7 @@ namespace Accretion
                     }
 
                     break;
+
                 case GameStatus.OpeningText:
                     if (String.IsNullOrEmpty(this.level.openingText()) ||
 #if WINDOWS
@@ -197,6 +194,7 @@ namespace Accretion
                     }
 
                     break;
+
                 case GameStatus.Victory:
                 case GameStatus.Defeat:
                     if (KeyboardHelper.isNewlyPressed(Keys.Space, keyboardState, previousKeyboardState) ||
@@ -216,8 +214,9 @@ namespace Accretion
                     {
                         this.updateSimulation();
                     }
-                    
+
                     break;
+
                 case GameStatus.LevelSelectMenu:
                     if (!playerIndex.HasValue)
                     {
@@ -251,16 +250,16 @@ namespace Accretion
                     else
                     {
                         Level newLevel = null;
-                        #if WINDOWS
+#if WINDOWS
                             newLevel = LevelSelectMenuHelper.keyboardAndMouseLevelSelect(keyboardState, previousKeyboardState, mouseState, previousMouseState);
-                        #elif WINDOWS_PHONE
+#elif WINDOWS_PHONE
                             newLevel = LevelSelectMenuHelper.touchScreenInput();
-                        #elif XBOX
+#elif XBOX
                         if (playerIndex.HasValue)
                         {
                             newLevel = LevelSelectMenuHelper.gamePadLevelSelect(gamePadState, previousGamePadState);
                         }
-                        #endif
+#endif
 
                         if (newLevel != null)
                         {
@@ -301,11 +300,13 @@ namespace Accretion
                     }
 
                     break;
+
                 case GameStatus.Starting:
                     this.UnloadContent();
                     this.LoadContent();
                     this.gameStatus = GameStatus.OpeningText;
                     break;
+
                 case GameStatus.Credits:
                     if (this.level is MenuBackground)
                     {
@@ -320,6 +321,7 @@ namespace Accretion
                     }
                     CreditsHelper.increment++;
                     break;
+
                 default:
                     throw new InvalidOperationException(String.Format("Not sure what to do with gamestate {0} in the Update function.", this.gameStatus));
             }
@@ -448,6 +450,7 @@ namespace Accretion
                         gameField.draw(this.spriteBatch, this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
                     }
                     break;
+
                 case GameStatus.OpeningText:
                     if (!String.IsNullOrEmpty(this.level.openingText()))
                     {
@@ -455,6 +458,7 @@ namespace Accretion
                     }
 
                     break;
+
                 case GameStatus.Defeat:
                 case GameStatus.Victory:
                     if (gameField != null)
@@ -472,17 +476,20 @@ namespace Accretion
                     text = text + Environment.NewLine + Environment.NewLine + PlatformSpecificStrings.REPLAY_OR_BACK;
 
                     MessageWriter.displayMessageCentered(text, font, spriteBatch, this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
-                    
+
                     break;
+
                 case GameStatus.LevelSelectMenu:
                     if (gameField != null)
                     {
                         gameField.draw(this.spriteBatch, this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
                     }
                     LevelSelectMenuHelper.drawMenu(spriteBatch);
-                    break; 
+                    break;
+
                 case GameStatus.Starting:
                     break;
+
                 case GameStatus.Credits:
                     if (gameField != null)
                     {
@@ -491,10 +498,11 @@ namespace Accretion
 
                     CreditsHelper.draw(font, spriteBatch, this.graphics.PreferredBackBufferWidth, this.graphics.PreferredBackBufferHeight);
                     break;
+
                 default:
                     throw new InvalidOperationException(String.Format("Not sure what to do with gamestate {0} in the Draw function.", this.gameStatus));
             }
-            
+
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -504,60 +512,60 @@ namespace Accretion
         {
             //try
             //{
-                if (!String.IsNullOrEmpty(level.music))
-                {
-                    this.music = Content.Load<Song>(level.music);
-                }
-                else
-                { 
-                    this.music = null; 
-                }
+            if (!String.IsNullOrEmpty(level.music))
+            {
+                this.music = Content.Load<Song>(level.music);
+            }
+            else
+            {
+                this.music = null;
+            }
 
-                if (level.initialZoom > 0)
-                {
-                    this.gameField.initialZoomLevel = level.initialZoom;
-                    this.gameField.zoomLevel = level.initialZoom;
-                }
+            if (level.initialZoom > 0)
+            {
+                this.gameField.initialZoomLevel = level.initialZoom;
+                this.gameField.zoomLevel = level.initialZoom;
+            }
 
-                if (level.startingZoom > 0)
-                {
-                    this.gameField.startingZoomLevel = level.startingZoom;
-                }
+            if (level.startingZoom > 0)
+            {
+                this.gameField.startingZoomLevel = level.startingZoom;
+            }
 
-                if (level.mapSize != null && level.mapSize != Vector2.Zero)
-                {
-                    this.gameField.setMapSize(level.mapSize);
-                }
+            if (level.mapSize != null && level.mapSize != Vector2.Zero)
+            {
+                this.gameField.setMapSize(level.mapSize);
+            }
 
-                this.victoryCondition = level.victoryCondition;
-                this.gameField.gravity = level.gravitationalLaw;
-                this.gameField.wrapEdges = level.wrapEdges;
+            this.victoryCondition = level.victoryCondition;
+            this.gameField.gravity = level.gravitationalLaw;
+            this.gameField.wrapEdges = level.wrapEdges;
 
-                List<SpaceObject> collisionObjects = level.spaceObjects();
-                if (collisionObjects != null)
-                {
-                    this.gameField.addSpaceObjects(collisionObjects);
-                }
+            List<SpaceObject> collisionObjects = level.spaceObjects();
+            if (collisionObjects != null)
+            {
+                this.gameField.addSpaceObjects(collisionObjects);
+            }
 
-                List<SpaceObject> gravitationalObjects = level.gravitationalObjects();
-                if (gravitationalObjects != null)
-                {
-                    this.gameField.addGravitationalObjects(gravitationalObjects);
-                }
+            List<SpaceObject> gravitationalObjects = level.gravitationalObjects();
+            if (gravitationalObjects != null)
+            {
+                this.gameField.addGravitationalObjects(gravitationalObjects);
+            }
 
-                this.gameField.setPlayer(level.player());
+            this.gameField.setPlayer(level.player());
 
-                if (level.cameraLockedOnPlayer)
-                {
-                    this.gameField.cameraLockedObject = gameField.getPlayer();
-                }
+            if (level.cameraLockedOnPlayer)
+            {
+                this.gameField.cameraLockedObject = gameField.getPlayer();
+            }
 
-                this.gameStatus = GameStatus.InProgress;
+            this.gameStatus = GameStatus.InProgress;
 
-                if (level.collisionDetection != null)
-                {
-                    this.gameField.collisionDetection = level.collisionDetection;
-                }
+            if (level.collisionDetection != null)
+            {
+                this.gameField.collisionDetection = level.collisionDetection;
+            }
             //}
             //catch (Exception e)
             //{
@@ -569,7 +577,6 @@ namespace Accretion
         {
             if (this.IsActive)
             {
-                
                 if (gameField != null && gameField.getPlayer() != null)
                 {
                     Vector2? ejectionDirection = null;
@@ -615,7 +622,7 @@ namespace Accretion
             {
                 Vector2? mousePowerDirections = mouseHandler.getRightMouseClick(Mouse.GetState(), this.previousMouseState);
                 bool gamepadPowerUsed = GamepadHelper.buttonIsNewlyPressed(Buttons.RightTrigger, this.gamePadState, this.previousGamePadState);
-                
+
                 if (mousePowerDirections != null || gamepadPowerUsed)
                 {
                     this.gameField.getPlayer().usePowerUp(ref gameField);

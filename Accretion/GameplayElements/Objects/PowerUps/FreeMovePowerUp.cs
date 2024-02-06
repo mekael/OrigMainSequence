@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Accretion.GameplayObjects;
 using Microsoft.Xna.Framework.Audio;
-using Accretion.GameplayObjects;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Accretion.GameplayElements.Objects.PowerUps
 {
-    class FreeMovePowerUp : PowerUp
+    internal class FreeMovePowerUp : PowerUp
     {
-        public FreeMovePowerUp(int uses) : base(uses) { }
+        public FreeMovePowerUp(int uses) : base(uses)
+        {
+        }
 
         protected static char displayChar;
 

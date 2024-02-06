@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Accretion.Levels.LevelGenerationHelpers
 {
-    class MassDistributions
+    internal class MassDistributions
     {
         private static Random random = new Random();
 

@@ -1,6 +1,6 @@
-﻿using Accretion.GameplayObjects;
+﻿using Accretion.AudioHelpers;
+using Accretion.GameplayObjects;
 using Microsoft.Xna.Framework.Media;
-using Accretion.AudioHelpers;
 
 namespace Accretion.Levels.VictoryConditions
 {
@@ -15,7 +15,7 @@ namespace Accretion.Levels.VictoryConditions
         Credits
     }
 
-    abstract class VictoryCondition
+    internal abstract class VictoryCondition
     {
         public static readonly Song victoryMusic = AccretionGame.staticContent.Load<Song>("BrokeForFree-SomethingElated");
 

@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Accretion.Input
 {
-    class TouchscreenHelper
+    internal class TouchscreenHelper
     {
         private static List<Vector2> taps = new List<Vector2>();
         private static List<GestureSample> pinches = new List<GestureSample>();
@@ -96,14 +92,14 @@ namespace Accretion.Input
             if (holds.Count < 1)
             {
                 updateGestureLists();
-            }            
-            
+            }
+
             if (holds.Count > 0)
             {
-               returnHolds = new List<Vector2>(holds);
-               holds.Clear();
+                returnHolds = new List<Vector2>(holds);
+                holds.Clear();
             }
-            
+
             return returnHolds;
         }
 
@@ -118,12 +114,15 @@ namespace Accretion.Input
                     case GestureType.Pinch:
                         pinches.Add(gesture);
                         break;
+
                     case GestureType.Tap:
                         taps.Add(gesture.Position);
                         break;
+
                     case GestureType.Hold:
                         holds.Add(gesture.Position);
                         break;
+
                     default:
                         break;
                 }

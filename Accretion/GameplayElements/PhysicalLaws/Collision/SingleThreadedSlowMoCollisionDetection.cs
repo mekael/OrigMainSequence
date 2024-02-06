@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Accretion.GameplayElements.Objects;
-using System.Threading;
-using System.Collections;
+using Microsoft.Xna.Framework;
+
 #if WINDOWS
 using System.Threading.Tasks;
 #endif
@@ -150,18 +145,17 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                                     //TODO: handle the case where both are of similar size
                                     //if (!spaceObject2.pendingRemoval && !spaceObject1.pendingRemoval)
                                     //{
-                                        if (spaceObject1.getMass() >= spaceObject2.getMass())
-                                        {
-                                            spaceObject1.absorbAndConserveMomentum(spaceObject2);
-                                        }
-                                        else
-                                        {
-                                            spaceObject2.absorbAndConserveMomentum(spaceObject1);
-                                        }
+                                    if (spaceObject1.getMass() >= spaceObject2.getMass())
+                                    {
+                                        spaceObject1.absorbAndConserveMomentum(spaceObject2);
+                                    }
+                                    else
+                                    {
+                                        spaceObject2.absorbAndConserveMomentum(spaceObject1);
+                                    }
 
-                                        collision = true;
+                                    collision = true;
                                     //}
-
                                 }
                             }
                         }
@@ -197,7 +191,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                         if (spaceObject.getFieldLocation().X > bound.Y)
                         {
                             bound.Y = spaceObject.getFieldLocation().X;
-
                         }
                     }
 
@@ -213,7 +206,6 @@ namespace Accretion.GameplayElements.PhysicalLaws.Collision
                         if (spaceObject.getFieldLocation().Y > bound.Z)
                         {
                             bound.Z = spaceObject.getFieldLocation().Y;
-
                         }
                     }
                 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Accretion.GameplayElements.Objects;
+﻿using Accretion.GameplayElements.Objects;
 using Microsoft.Xna.Framework;
 
 namespace Accretion.GameplayElements.PhysicalLaws.Collision
 {
-    class LinearDecayGravity : IGravitationalLaw
+    internal class LinearDecayGravity : IGravitationalLaw
     {
         private const int GRAVITATIONAL_CONSTANT = 4;
 

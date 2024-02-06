@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Accretion.GameplayElements.Objects;
-using Accretion.Levels.VictoryConditions;
+﻿using Accretion.GameplayElements.Objects;
 using Accretion.GameplayElements.PhysicalLaws.Collision;
 using Accretion.Levels.LevelGenerationHelpers;
+using Accretion.Levels.VictoryConditions;
+using Microsoft.Xna.Framework;
 
 namespace Accretion.Levels
 {
-    class TheFunnel : Level
+    internal class TheFunnel : Level
     {
 #if WINDOWS
         protected const int SOLAR_SYSTEM_HEIGHT = 70000;
@@ -40,7 +36,6 @@ namespace Accretion.Levels
 
         protected const int SOLAR_SYSTEM_LENGTH = SOLAR_SYSTEM_HEIGHT * 15 / 10;
         private float xOffset = 0;
-
 
         public TheFunnel()
         {
